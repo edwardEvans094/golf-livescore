@@ -51,6 +51,19 @@ const matchDAO = {
     .exec((err, results) => {
       return callback(err, results);
     })
+  },
+
+  getAllMatchWithType: (tournamentId, type, callback) => {
+    Match.find({
+      tournament_id: tournamentId,
+      type: type
+    })
+    .sort({created_at: -1})
+    .limit(10)
+    .lean()
+    .exec((err, results) => {
+      return callback(err, results);
+    })
   }
 }
 

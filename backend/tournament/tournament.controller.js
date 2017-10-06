@@ -1,4 +1,8 @@
 const tournamentService = require('./tournament.service');
+const matchService = require('../match/match.service');
+
+const async = require('async');
+
 
 module.exports = {
   renderCreate: (req, res) => {
@@ -42,7 +46,26 @@ module.exports = {
   },
 
   renderScore: (req, res) => {
-    return res.render('tournament/score');
+    let tournamentId = req.params.tournamentId;
+    async.parallel({
+      getTournament: (asyncCallback) => {
+        tournamentService.getByIdPopulateTeam(tournamentId, asyncCallback);
+      }, 
+      getSingleMatch: (asyncCallback) => {
+        matchService.getAllSingleMatch(tournamentId, asyncCallback);
+      },
+      getFoursomesMatch: (asyncCallback) => {
+        matchService.getAllFoursomesMatch(tournamentId, asyncCallback);
+      }
+    }, (errs, results) => {
+      if(errs){
+        //todo handle errors
+      }
+      // return res.render('tournament/score', {results: results});
+      return res.json(results);
+    });
+
+    
   },
 
   renderUpdate: (req, res) => {

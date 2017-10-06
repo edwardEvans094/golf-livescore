@@ -1,1 +1,523 @@
-| content from scores
+#{list}
+doctype html
+html
+  head
+    title VHandicap
+    meta(charset='UTF-8')
+    link(rel='shortcut icon', href='/favicon.png')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/fontend/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/fontend/css/style.css') 
+    link(rel='stylesheet', href='/fontend/css/setmedia.css')
+    link(href='/fontend/css/font-awesome.css', rel='stylesheet')
+    script(src='/fontend/js/jquery-1.11.1.min.js')
+    script(src='/fontend/js/bootstrap.min.js')
+    script(src='/js/main.js')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+  body
+    nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.__padding0
+      .container.__row
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        .d-flex
+          a.navbar-brand(href='#')
+            .__logo
+              img.w_100(src='image/logo.png', alt='GolferVN')
+        #navbarSupportedContent.navbar-collapse.collapse
+          ul.navbar-nav.flex-row.ml-auto.justify-content-between
+            li.nav-item.active
+              a.nav-link(href='#') Bảng Xếp Hạng
+            li.nav-item
+              a.nav-link(href='#') Giải đấu
+            li.nav-item
+              a.nav-link(href='#') Người chơi
+          form.form-inline.my-2.my-lg-0
+            input.form-control.mr-sm-2(type='text', placeholder='Search')
+            button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    .clearfix-10
+    section
+      .container.__row
+        .__fight
+          ._row
+            .col-md-5.col-sm-5.col-sm-416.__floatleft
+              .__1a
+                img.w_100(src='image/doi1.png', alt='images')
+            .col-md-2.col-sm-166.__floatleft
+              .__1a.and-flight
+                img.w_100(src='image/vs.png', alt='images')
+            .col-md-5.col-sm-416.__floatleft
+              .__1a
+                img.w_100(src='image/doi1.png', alt='images')
+          .clearfix-20
+          ._row
+            .col-md-12
+              .flight-title.text-center
+                .title-parent.text-uppercase
+                  h3.font-weight-bold VGA UNION CUP 2017
+                .desciption.text-uppercase
+                  h5 FLC sầm sơn golf link | 24-26 tháng 3
+        .clearfix-20
+        .fulltabs
+          ._row
+            ul.nav.nav-tabs.w_100.fs_23(role='tablist')
+              li.nav-item.col-md-6.__colfix
+                a.nav-link.active.text-uppercase.text-center(data-toggle='tab', href='#home', role='tab') Bảng Xếp hạng
+              li.nav-item.col-md-6.__colfix
+                a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#profile', role='tab') Giới thiệu
+            // Tab panes
+            .tab-content.w_100.bc_ffffff
+              #home.tab-pane.active(role='tabpanel')
+                .clearfix-10
+                ._row.clearfix
+                  .col-md-12.text-center
+                    h3.flight-result.text-uppercase.font-weight-bold kết quả
+                    p.font-italic (Cập nhật mỗi 4 phút)
+                  .clearfix-10
+                  .flight-one.w_100
+                    .col-md-6.col_60.__colfix.__floatleft
+                      .col-md-5.__colfix.col-sm-416.__floatleft
+                        .icon-flight
+                          img.w_100(src='image/icon-one.png')
+                      .col-md-7.col-583.__floatleft.fs_23
+                        .name-flight
+                          .text-uppercase.text-center.font-weight-bold Đội 1
+                        .clearfix-20
+                        .flight-poit.text-center
+                          .font-weight-bold 16
+                          p điểm
+                      .clearfix-10
+                      .vhandicap
+                        .col-md-12
+                          .vhandicap-poit.c_0f3d9c.fs_23
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                      .clearfix
+                    .col-md-6.col_60.__colfix.__floatleft
+                      .col-md-7.col-583.__floatleft.fs_23
+                        .name-flight
+                          .text-uppercase.text-center.font-weight-bold Đội 2
+                        .clearfix-20
+                        .flight-poit.text-center
+                          .font-weight-bold 12
+                          p điểm
+                      .col-md-5.col-sm-416.__colfix.__floatleft
+                        .icon-flight
+                          img.w_100(src='image/icon-two.png')
+                      .clearfix-10
+                      .vhandicap
+                        .col-md-12
+                          .vhandicap-poit.c_dd0222.fs_23
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                      .clearfix
+              // end home
+              #profile.tab-pane(role='tabpanel')
+        // end fulltask
+        .clearfix-20
+        .session-tabs
+          ._row
+            ul.nav.nav-tabs.w_100.fs_23(role='tablist')
+              li.nav-item.col-md-4.__colfix
+                a.nav-link.active.text-uppercase.text-center(data-toggle='tab', href='#singles', role='tab') Singles
+              li.nav-item.col-md-4.__colfix
+                a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#four-ball', role='tab') Four-Ball
+              li.nav-item.col-md-4.__colfix
+                a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#foursomes', role='tab') Foursomes
+            .tab-content.w_100.bc_ffffff
+              #singles.tab-pane.active(role='tabpanel')
+                .match__wrapper
+                  .clearfix-10
+                  ._row
+                    // show item
+                    .item.w_100.box-match-1
+                      .match__title.clearfix.fs_23
+                        .col-md-2.col-sm-166.__colfix.__floatleft
+                          .title-flight
+                            .font-weight-bold.font-12 Trận 28
+                        .col-md-10.col_833.__floatleft.text-center.text-uppercase
+                          .timeago__wrap.text-center.text-uppercase
+                            .font-weight-bold Ngày thi đấu: 22/02/2017
+                            .font-weight-bold Tee time: 10:28
+                      .clearfix-10
+                      .col-md-3.col_25.__floatleft
+                        .match__team.match__team__usa.match__winner.bc_0f3d9c
+                          .clearfix-20
+                          .col-md-12.__colfix
+                            .match__team__players.text-center
+                              img.w_100.wh_100px(src='image/avatar1.png')
+                            .clearfix-20
+                            .match__team__player--name.c_ffffff.text-center
+                              span.match__team__player--andrew.font-weight-bold.fs_23.font-12 ANDREW
+                              |  Hùng phạm
+                            .clearfix-20
+                            .match__team__score.c_ffffff.text-center.fs_23
+                              span.match__team__score--large.font-weight-bold 4
+                              span.match__team__score--spacer.font-weight-bold &
+                              span.match__team__score--small 3
+                          .col-md-4
+                      .col-md-6.col_60.__floatleft.fs_23
+                        .match__holes.text-center
+                          .match__holes-front
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                          .match__holes-back
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                          .clearfix-40
+                          .match__holes--more.w_100(onclick='showdetail(1)')
+                            img.img-center(src='image/read_more.png')
+                      .col-md-3.col_25.__floatleft
+                        .match__team.match__team__usa.match__winner.match__team_right
+                          .clearfix-20
+                          .col-md-12.__colfix
+                            .match__team__players.text-center
+                              img.w_100.wh_100px(src='image/avatar2.png')
+                            .clearfix-20
+                            .match__team__player--name.text-center
+                              span.match__team__player--lastname.font-weight-bold.fs_23.font-12 ANDREW
+                              span.match__team__player--firstname Hùng phạm
+                            .clearfix-20
+                            .match__team__score.c_ffffff.text-center.fs_23.hidden
+                              span.match__team__score--large.font-weight-bold 4
+                              span.match__team__score--spacer.font-weight-bold &
+                              span.match__team__score--small 3
+                      .clearfix
+                    // end show item
+                    .item.box-match-2.hidden
+                      .match.singles
+                        .text-center
+                          | Tran 12
+                        .clearfix-10
+                        .match__holes__expanded.clearfix(onclick='showdetail(0)')
+                          .col-md-3.col-25.__floatleft
+                            .match__holes__expanded__labels.font-weight-bold.pull-right.fs_23
+                              .holes Hố
+                              .par Par
+                          .col-md-8.col-tt-8.__colfix.__floatleft
+                            .match__holes__expanded__grid.text-center.font-weight-bold
+                              ul
+                                li 1
+                                li 2
+                                li 3
+                                li 4
+                                li 5
+                                li 6
+                                li 7
+                                li 8
+                                li 9
+                                li 10
+                                li 11
+                                li 12
+                                li 13
+                                li 14
+                                li 15
+                                li 16
+                                li 17
+                                li 18
+                              ul
+                                li 1
+                                li 2
+                                li 3
+                                li 4
+                                li 5
+                                li 6
+                                li 7
+                                li 8
+                                li 9
+                                li 10
+                                li 11
+                                li 12
+                                li 13
+                                li 14
+                                li 15
+                                li 16
+                                li 17
+                                li 18
+                          .col-md-1.col-tt-1.__floatleft.__colfix
+                        .match__team.match__winner.clearfix
+                          .match__team__players
+                            .col-md-3.col_25.match__team_left.__floatleft
+                              .w_100.macht_team_one
+                                .wh_100px
+                                  img.w_100(src='image/avatar1.png', alt='avatar')
+                                .macht_team_name.padding0_5
+                                  .first_name.text-uppercase.font-weight-bold Phương
+                                  .last_name.font-italic Trần Kim
+                            .col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
+                              .text-center.font-weight-bold.macht_team_score
+                                ul
+                                  li
+                                    span 1
+                                  li
+                                    span 2
+                                  li
+                                    span 3
+                                  li
+                                    span 4
+                                  li
+                                    span 5
+                                  li
+                                    span 6
+                                  li
+                                    span 7
+                                  li
+                                    span 8
+                                  li
+                                    span 9
+                                  li
+                                    span 3
+                                  li
+                                    span 4
+                                  li
+                                    span 5
+                                  li
+                                    span 6
+                                  li
+                                    span 3
+                                  li
+                                    span 5
+                                  li
+                                    span 5
+                                  li
+                                    span 1
+                                  li
+                                    span 2
+                            .col-md-1.col-tt-1.__floatleft.__colfix.text-center.score__winner.fs_23.c_ffffff
+                              .match_score_winner
+                                span.match__team__score--large.font-weight-bold 4
+                                span.match__team__score--spacer.font-weight-bold &
+                                span.match__team__score--small 3
+                          .clearfix
+                          .match__team__players
+                            .col-md-3.col_25.match__team_left.__floatleft
+                              .w_100.macht_team_one
+                                .wh_100px
+                                  img.w_100(src='image/avatar1.png', alt='avatar')
+                                .macht_team_name.padding0_5
+                                  .first_name.text-uppercase.font-weight-bold Nam
+                                  .last_name.font-italic Hoàng Trần
+                            .col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
+                              .text-center.font-weight-bold.macht_team_score
+                                ul
+                                  li
+                                    span 1
+                                  li
+                                    span 2
+                                  li
+                                    span 3
+                                  li
+                                    span 4
+                                  li
+                                    span 5
+                                  li
+                                    span 6
+                                  li
+                                    span 7
+                                  li
+                                    span 8
+                                  li
+                                    span 9
+                                  li
+                                    span 3
+                                  li
+                                    span 4
+                                  li
+                                    span 5
+                                  li
+                                    span 6
+                                  li
+                                    span 3
+                                  li
+                                    span 5
+                                  li
+                                    span 5
+                                  li
+                                    span 1
+                                  li
+                                    span 2
+                            .col-md-1.col-tt-1.__floatleft.__colfix
+              // end foursome
+              #four-ball.tab-pane(role='tabpanel')
+                .clearfix-10
+                ._row
+                  .item.w_100
+                    .match__title.clearfix.fs_23
+                      .col-md-2.col-sm-166.__floatleft
+                        .title-flight
+                          .font-weight-bold Trận 28
+                      .col-md-10.col_833.__floatleft.text-center.text-uppercase
+                        .timeago__wrap.text-center.text-uppercase
+                          .font-weight-bold Ngày thi đấu: 22/02/2017
+                          .font-weight-bold Tee time: 10:28
+                    .clearfix-20
+                    .box-match.font-12
+                      .col-md-3.col_25.__floatleft
+                        .match__team.match__team__usa.match__team_left
+                          .match__team__players
+                            .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+                              img.w_100(src='image/avatar1.png', alt='')
+                            .col-md-7.col-583.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .clearfix
+                          .match__team__players
+                            .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+                              img.w_100(src='image/avatar2.png', alt='')
+                            .col-md-7.col-583.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .clearfix
+                      .col-md-6.col_60.__floatleft.fs_23
+                        .match__holes.text-center
+                          .match__holes-front
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                          .match__holes-back
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                        .clearfix-40
+                        .match__holes--more.w_100
+                          img.img-center(src='image/read_more.png')
+                      .col-md-3.col_25.__floatleft
+                        .match__team.match__team__usa.bc_dd0222.c_ffffff
+                          .match__team__players
+                            .col-md-7.col-583.col-xs-7.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+                              img.w_100(src='image/avatar1.png', alt='')
+                            .clearfix
+                          .match__team__players
+                            .col-md-7.col-583.col-xs-5.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+                              img.w_100(src='image/avatar2.png', alt='')
+                            .clearfix
+              // end four-ball
+              #foursomes.tab-pane(role='tabpanel')
+                .clearfix-10
+                ._row
+                  .item.w_100.box-match-1
+                    .match__title.clearfix.fs_23
+                      .col-md-2.col-sm-166.__floatleft
+                        .title-flight
+                          .font-weight-bold Trận 28
+                      .col-md-10.col_833.__floatleft.text-center.text-uppercase
+                        .timeago__wrap.text-center.text-uppercase
+                          .font-weight-bold Ngày thi đấu: 22/02/2017
+                          .font-weight-bold Tee time: 10:28
+                    .clearfix-20
+                    .box-match.font-12
+                      .col-md-3.col_25.__floatleft
+                        .match__team.match__team__usa.match__team_left
+                          .match__team__players
+                            .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+                              img.w_100(src='image/avatar1.png', alt='')
+                            .col-md-7.col-583.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .clearfix
+                          .match__team__players
+                            .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+                              img.w_100(src='image/avatar2.png', alt='')
+                            .col-md-7.col-583.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .clearfix
+                      .col-md-6.col_60.__floatleft.fs_23
+                        .match__holes.text-center
+                          .match__holes-front
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                          .match__holes-back
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                            i.fa.fa-circle(aria-hidden='true')
+                        .clearfix-40
+                        .match__holes--more.w_100(onclick='showdetail(1)')
+                          img.img-center(src='image/read_more.png')
+                      .col-md-3.col_25.__floatleft
+                        .match__team.match__team__usa.bc_dd0222.c_ffffff
+                          .match__team__players
+                            .col-md-7.col-583.col-xs-7.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+                              img.w_100(src='image/avatar1.png', alt='')
+                            .clearfix
+                          .match__team__players
+                            .col-md-7.col-583.col-xs-5.__floatleft
+                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+                              .match__team__player--firstname Hùng phạm
+                            .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+                              img.w_100(src='../image/avatar2.png', alt='')
+                            .clearfix
+                  // foursomes box-match-2
+                  .item.w_100.box-match-2
+                  // end foursomes box-match-2
+        // end session-tabs
+    footer
+      .clearfix-20
+      .container.__row
+        .col-md-12.__colfix
+          .footer-root
+            span
+              | Hệ thống bảng xếp hạng cập nhật điểm số golfer, thống kê và lịch trình giải đấu Golf tại Việt Nam Phát triển bởi Golfervn.com

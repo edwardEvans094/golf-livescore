@@ -1,0 +1,126 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 3, 2017, 2:17:25 PM
+    Author     : Kuro
+*/
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+    margin: 0px auto; }
+
+  .fs_23 {
+    font-size: 23px; }
+
+  .vhandicap-poit i {
+    padding-left: 8px;
+    padding-right: 8px; }
+
+  .and-flight {
+    padding: 120px 0px; }
+
+  .wh_100px {
+    width: 100px;
+    height: 100px; }
+
+  .match__holes i {
+    padding-left: 20px;
+    padding-right: 20px; }
+
+  .fix-li, .match__holes__expanded__grid li, .macht_team_score li {
+    font-size: 17px;
+    height: 45px; }
+
+  .match__holes__expanded__grid li {
+    width: 4.8%; }
+
+  .macht_team_score li {
+    width: 5%; }
+
+  .par {
+    padding-top: 8px; }
+
+  .macht_team_score {
+    margin-top: 5%; }
+
+  .macht_team_score ul li span {
+    border-radius: 13px;
+    padding: 0px 5px;
+    border: 1px solid #ccc;
+    background-color: #ccc; }
+
+  .score__winner {
+    height: 15vh; }
+
+  .score__winner .match_score_winner {
+    padding-top: 40%; } }
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    margin: 0px auto; }
+
+  .fixcol, .col-sm-416, .col-sm-166, .col_60, .col-583, .col_25, .font-12, .col_833 {
+    padding-left: 0px;
+    padding-right: 0px; }
+
+  .col-sm-416 {
+    max-width: 41.666667%; }
+
+  .col-sm-166 {
+    max-width: 16.666667%; }
+
+  .and-flight {
+    padding: 40px 0px; }
+
+  .col_60 {
+    max-width: 50%; }
+
+  .col-583 {
+    max-width: 58.333333%; }
+
+  .col_25 {
+    max-width: 25%; }
+
+  .col-25 {
+    max-width: 25%; }
+
+  .font-12 {
+    font-size: 12px; }
+
+  .col-tt-8 {
+    max-width: 66.666667%; }
+
+  .col-tt-1 {
+    max-width: 8.333333%; }
+
+  .col_833 {
+    max-width: 83.333333%; }
+
+  .match__holes__expanded__grid li {
+    font-size: 8px;
+    height: 12px; }
+
+  .macht_team_score li {
+    padding: 4px 0; }
+
+  .macht_team_score {
+    margin-top: 15%; }
+
+  .macht_team_score ul li span {
+    padding: 0px;
+    border: 1px solid #ccc;
+    font-size: 9px; }
+
+  .fs_23 {
+    font-size: 12px; }
+
+  .score__winner {
+    height: 15vh; }
+
+  .match_score_winner {
+    margin-top: 35px; } }
+
+/*# sourceMappingURL=setmedia.css.map */

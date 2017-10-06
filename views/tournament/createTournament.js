@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
       contentType: false,  // tell jQuery not to set contentType
       timeout: 60000,
       success : function(data) {
-        console.log(data);
+        //console.log(data);
         $("#golferAvar").attr("src","/uploads/" + data.filename);
         $('input[name=userAvatar]').val(data.filename);
       }

@@ -27,39 +27,48 @@ matchSchema.pre('save', function(next) {
     golfer.display = new Array(this.par.length).fill(1);
   })
   //caculate score
-  if(this.type == 2){
+  if(this.type == 2 || this.type == 3){   /// single match
     this.par.forEach((par, parIndex) => {
       let tmpObj = {};
       for(let i=0; i < this.golfer.length; i++){
         if(!tmpObj || tmpObj.minscore == undefined){
           tmpObj = {
-            // teamId: this.golfer[i].team_id,
+            teamId: this.golfer[i].team_id,
             minscore: this.golfer[i].result[parIndex],
             golferIndex: i
           }  
           this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 2; //highlight  
         }
         else if(this.golfer[i].result[parIndex] == tmpObj.minscore){
+          if(this.type == 3 && tmpObj.teamId !== this.golfer[i].team_id.toString()) continue;
+                    
           this.golfer[tmpObj.golferIndex].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 1; 
           this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 1; 
+          
         }
-        else if(this.golfer[i].result[parIndex] < tmpObj.minscore && this.golfer[i].result[parIndex] < par){
+        else if(this.golfer[i].result[parIndex] < tmpObj.minscore && this.golfer[i].result[parIndex] <= par){
 
           this.golfer[tmpObj.golferIndex].display[parIndex] = 1 //unhighlight
           tmpObj = {
-            // teamId: this.golfer[i].team_id,
+            teamId: this.golfer[i].team_id,
             minscore: this.golfer[i].result[parIndex],
             golferIndex: i
           }
           this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 2; 
         }
+        console.log(tmpObj);
       }
     });
 
     for(let i=0; i < this.golfer.length; i++){
       this.golfer[i].total_result = this.golfer[i].display.filter(x=>{return x == 2}).length;
     }
-  }
+  } 
+  // else if(this.type == 3){    //foursome match
+
+
+
+  // }
   return next();
 });
 

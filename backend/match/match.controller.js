@@ -16,6 +16,7 @@ module.exports = {
     let matchId = req.params.matchId;
     matchService.getByIdWithPopulate(matchId, (err, result) => {      
       //TODO check error and return 
+      console.log("=====================");
       console.log(result.golfer);
       return res.render('match/updateScore', { match: result});
       // return res.json(result);
@@ -26,6 +27,7 @@ module.exports = {
     let matchId = req.params.matchId;
     let data = req.body.score;
     //TODO validate input
+    console.log(data);
     matchService.updateScore(matchId, data, (err, result) => {
       if(err){
         req.flash('error', { msg: 'An error when update score of match!' });

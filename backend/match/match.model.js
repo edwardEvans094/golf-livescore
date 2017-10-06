@@ -10,7 +10,9 @@ const matchSchema = new mongoose.Schema({
   golfer: [{
     golfer_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Golfer', require: true},
     team_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', require: true},
-    result: [{ type: Number }]
+    result: [{ type: Number }],
+    display: [{ type: Number, default: 1 }],   // 0: none, 1: normal display, 2: highlight, 3: unknown
+    total_result: Number
   }],
   status: {type: Number, default: 1}
 }, { timestamps: { 
@@ -19,14 +21,47 @@ const matchSchema = new mongoose.Schema({
   } 
 });
 
-// matchSchema.pre('save', function(next) {
-//   var self = this;
+matchSchema.pre('save', function(next) {
+  var self = this;
+  this.golfer.forEach((golfer)=>{
+    golfer.display = new Array(this.par.length).fill(1);
+  })
+  //caculate score
+  if(this.type == 2){
+    this.par.forEach((par, parIndex) => {
+      let tmpObj = {};
+      for(let i=0; i < this.golfer.length; i++){
+        if(!tmpObj || tmpObj.minscore == undefined){
+          tmpObj = {
+            // teamId: this.golfer[i].team_id,
+            minscore: this.golfer[i].result[parIndex],
+            golferIndex: i
+          }  
+          this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 2; //highlight  
+        }
+        else if(this.golfer[i].result[parIndex] == tmpObj.minscore){
+          this.golfer[tmpObj.golferIndex].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 1; 
+          this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 1; 
+        }
+        else if(this.golfer[i].result[parIndex] < tmpObj.minscore && this.golfer[i].result[parIndex] < par){
 
-//   var currentDate = Date.now();
-//   this.updated_at = currentDate;
+          this.golfer[tmpObj.golferIndex].display[parIndex] = 1 //unhighlight
+          tmpObj = {
+            // teamId: this.golfer[i].team_id,
+            minscore: this.golfer[i].result[parIndex],
+            golferIndex: i
+          }
+          this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 2; 
+        }
+      }
+    });
 
-//   return next();
-// });
+    for(let i=0; i < this.golfer.length; i++){
+      this.golfer[i].total_result = this.golfer[i].display.filter(x=>{return x == 2}).length;
+    }
+  }
+  return next();
+});
 
 const Match = mongoose.model('Match', matchSchema);
 

@@ -61,8 +61,9 @@ module.exports = {
       if(errs){
         //todo handle errors
       }
-      // return res.render('tournament/score', {results: results});
-      return res.json(results);
+      console.log(results);
+      return res.render('tournament/score', {results: results});
+      // return res.json(results);
     });
 
     

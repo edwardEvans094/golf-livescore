@@ -58,6 +58,9 @@ const matchDAO = {
       tournament_id: tournamentId,
       type: type
     })
+    .populate([
+      {path: 'golfer.golfer_id', model: 'Golfer', select: '_id name avatar'}
+    ])
     .sort({created_at: -1})
     .limit(10)
     .lean()

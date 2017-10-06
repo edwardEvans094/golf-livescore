@@ -4,10 +4,7 @@ const tournamentService = require('../tournament/tournament.service');
 module.exports = {
   renderCreate: (req, res) => {
     let tournamentId = req.params.tournamentId;
-    console.log("-------------------------- params");
-    console.log(tournamentId);
     tournamentService.getByIdPopulateTeam(tournamentId, (err, result) => {
-      console.log(result);
 
       //TODO check error and return 
 
@@ -17,10 +14,9 @@ module.exports = {
 
   renderUpdateScore: (req, res) => {
     let matchId = req.params.matchId;
-    matchService.getByIdWithPopulate(matchId, (err, result) => {
-      console.log(result);
-      
+    matchService.getByIdWithPopulate(matchId, (err, result) => {      
       //TODO check error and return 
+      console.log(result.golfer);
       return res.render('match/updateScore', { match: result});
       // return res.json(result);
     })
@@ -29,11 +25,8 @@ module.exports = {
   updateScore: (req, res) => {
     let matchId = req.params.matchId;
     let data = req.body.score;
-    console.log(data);
     //TODO validate input
     matchService.updateScore(matchId, data, (err, result) => {
-      console.log(err);
-      console.log(result);
       if(err){
         req.flash('error', { msg: 'An error when update score of match!' });
         return res.redirect('/match/update-score/' + matchId);
@@ -55,9 +48,6 @@ module.exports = {
 
     
     //TODO validate input
-    console.log("----------------------")
-    console.log(req.body);
-
     tournamentService.getById(tournamentId, (err, result) => {
       console.log(result);
       let golfer = [];
@@ -81,10 +71,7 @@ module.exports = {
         golfer: golfer,
         tournament_id: tournamentId
       }
-      console.log(newMatch);
       matchService.createNewMatchInTournament(newMatch, (err, result) => {
-        console.log(err);
-        console.log(result);
         if(err){
           req.flash('error', { msg: 'An error when create new match!' });
           return res.redirect('/match/create/' + tournamentId);

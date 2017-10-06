@@ -24,14 +24,23 @@ block content
 						each val, index in match.par
 							th= val
 				tbody(id="data-score")
-					each val, index in match.golfer
-						tr(id=val.golfer_id._id)
-							td= val.golfer_id.name
-							each score, indexScore in match.par
-								if match.golfer[index].result[indexScore]
-									td= match.golfer[index].result[indexScore]
-								else 
-									td= 0
+					if match.type == 2
+						each val, index in match.golfer
+							tr(id=val.golfer_id._id)
+								td= val.golfer_id.name
+								each score, indexScore in match.par
+									if match.golfer[index].result[indexScore]
+										if match.golfer[index].display[indexScore] == 2
+											if index == 0
+												td.highlight-red= match.golfer[index].result[indexScore]
+											else
+												td.highlight-blue= match.golfer[index].result[indexScore]
+										else if match.golfer[index].display[indexScore] == 3
+											td.highlight-unknow= match.golfer[index].result[indexScore]
+										else
+											td= match.golfer[index].result[indexScore]
+									else 
+										td= 0
 	br
 	.row
 		.col-sm-12

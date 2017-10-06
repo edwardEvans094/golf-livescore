@@ -6,16 +6,16 @@ html
     meta(charset='UTF-8')
     link(rel='shortcut icon', href='/favicon.png')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='/fontend/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/fontend/css/style.css') 
-    link(rel='stylesheet', href='/fontend/css/setmedia.css')
-    link(href='/fontend/css/font-awesome.css', rel='stylesheet')
-    script(src='/fontend/js/jquery-1.11.1.min.js')
-    script(src='/fontend/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/frontend/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/frontend/css/style.css') 
+    link(rel='stylesheet', href='/frontend/css/setmedia.css')
+    link(href='/frontend/css/font-awesome.css', rel='stylesheet')
+    script(src='/frontend/js/jquery-1.11.1.min.js')
+    script(src='/frontend/js/bootstrap.min.js')
     script(src='/js/main.js')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
   body
-    nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.__padding0
+    //- nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.__padding0
       .container.__row
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
@@ -37,7 +37,7 @@ html
     .clearfix-10
     section
       .container.__row
-        .__fight
+        //- .__fight
           ._row
             .col-md-5.col-sm-5.col-sm-416.__floatleft
               .__1a
@@ -199,7 +199,7 @@ html
                             i.fa.fa-circle(aria-hidden='true')
                           .clearfix-40
                           .match__holes--more.w_100(onclick='showdetail(1)')
-                            img.img-center(src='image/read_more.png')
+                            img.img-center(src='/frontend/images/read_more.png')
                       .col-md-3.col_25.__floatleft
                         .match__team.match__team__usa.match__winner.match__team_right
                           .clearfix-20
@@ -223,50 +223,29 @@ html
                           | Tran 12
                         .clearfix-10
                         .match__holes__expanded.clearfix(onclick='showdetail(0)')
-                          .col-md-3.col-25.__floatleft
-                            .match__holes__expanded__labels.font-weight-bold.pull-right.fs_23
-                              .holes Hố
-                              .par Par
-                          .col-md-8.col-tt-8.__colfix.__floatleft
-                            .match__holes__expanded__grid.text-center.font-weight-bold
-                              ul
-                                li 1
-                                li 2
-                                li 3
-                                li 4
-                                li 5
-                                li 6
-                                li 7
-                                li 8
-                                li 9
-                                li 10
-                                li 11
-                                li 12
-                                li 13
-                                li 14
-                                li 15
-                                li 16
-                                li 17
-                                li 18
-                              ul
-                                li 1
-                                li 2
-                                li 3
-                                li 4
-                                li 5
-                                li 6
-                                li 7
-                                li 8
-                                li 9
-                                li 10
-                                li 11
-                                li 12
-                                li 13
-                                li 14
-                                li 15
-                                li 16
-                                li 17
-                                li 18
+                          if (results && results.getSingleMatch)
+                            each match, matchIndex in results.getSingleMatch
+                              .col-sm-12
+                                table#mainTable.table.table-striped
+                                  thead
+                                    tr
+                                      th Hố
+                                      each val, index in match.par
+                                        th= index + 1
+                                  thead
+                                    tr
+                                      th Par
+                                      each val, index in match.par
+                                        th= val
+                                  tbody
+                                    each val, index in match.golfer
+                                      tr
+                                        td= val.golfer_id.name
+                                        each score, indexScore in match.par
+                                          if match.golfer[index].result[indexScore]
+                                            td= match.golfer[index].result[indexScore]
+                                          else 
+                                            td= 0
                           .col-md-1.col-tt-1.__floatleft.__colfix
                         .match__team.match__winner.clearfix
                           .match__team__players
@@ -423,7 +402,7 @@ html
                             i.fa.fa-circle(aria-hidden='true')
                         .clearfix-40
                         .match__holes--more.w_100
-                          img.img-center(src='image/read_more.png')
+                          img.img-center(src='/frontend/images/read_more.png')
                       .col-md-3.col_25.__floatleft
                         .match__team.match__team__usa.bc_dd0222.c_ffffff
                           .match__team__players
@@ -493,7 +472,7 @@ html
                             i.fa.fa-circle(aria-hidden='true')
                         .clearfix-40
                         .match__holes--more.w_100(onclick='showdetail(1)')
-                          img.img-center(src='image/read_more.png')
+                          img.img-center(src='/frontend/images/read_more.png')
                       .col-md-3.col_25.__floatleft
                         .match__team.match__team__usa.bc_dd0222.c_ffffff
                           .match__team__players

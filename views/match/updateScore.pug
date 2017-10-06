@@ -59,7 +59,45 @@ block content
 										else
 											td= match.golfer[index].result[indexScore]
 									else 
-										td= 0
+										td= 0		
+		.col-sm-12
+			table#mainTable.table.table-striped
+				thead
+					tr
+						th Hố
+						each val, index in match.par
+							th= index + 1
+				thead
+					tr
+						th Par
+						each val, index in match.par
+							th= val
+				tbody
+					if match.type == 3
+						tr
+							td= match.golfer[0].golfer_id.name + ' ' + match.golfer[1].golfer_id.name
+							each score, indexScore in match.par
+								if match.golfer[0].result[indexScore] || match.golfer[1].result[indexScore]
+									if match.golfer[0].display[indexScore] == 2 || match.golfer[1].display[indexScore] == 2
+										td.highlight-red= match.golfer[0].result[indexScore] < match.golfer[1].result[indexScore] ? match.golfer[0].result[indexScore] : match.golfer[1].result[indexScore]
+									else
+										td= match.golfer[0].result[indexScore] < match.golfer[1].result[indexScore] ? match.golfer[0].result[indexScore] : match.golfer[1].result[indexScore]
+								else if match.golfer[0].display[indexScore] == 3 || match.golfer[1].display[indexScore] == 3
+										td.highlight-unknow= 0
+								else 
+									td= 0
+						tr
+							td= match.golfer[2].golfer_id.name + ' ' + match.golfer[3].golfer_id.name
+							each score, indexScore in match.par
+								if match.golfer[2].result[indexScore] || match.golfer[3].result[indexScore]
+									if match.golfer[2].display[indexScore] == 2 || match.golfer[3].display[indexScore] == 2
+										td.highlight-blue= match.golfer[2].result[indexScore] < match.golfer[3].result[indexScore] ? match.golfer[2].result[indexScore] : match.golfer[3].result[indexScore]
+									else
+										td= match.golfer[2].result[indexScore] < match.golfer[3].result[indexScore] ? match.golfer[2].result[indexScore] : match.golfer[3].result[indexScore]
+								else if match.golfer[2].display[indexScore] == 3 || match.golfer[3].display[indexScore] == 3
+										td.highlight-unknow= 0
+								else 
+									td= 0
 	br
 	.row
 		.col-sm-12

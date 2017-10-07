@@ -9,6 +9,10 @@ const tournamentService = {
     return tournamentDAO.getByIdPopulateTeam(tournamentId, callback);
   },
 
+  getBySlug: (slug, callback) => {
+    return tournamentDAO.getBySlug(slug, callback);
+  },
+
   createNewTournament: (data, callback) => {
     return tournamentDAO.createNewTournament(data, callback);
   },

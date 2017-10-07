@@ -1,6 +1,8 @@
 const Tournament = require('./tournament.model');
 const _ = require('underscore');
+const slug = require('slug');
 
+const util = require('../util');
 module.exports = {
   getById: (tournamentId, callback) => {
     Tournament.findById(tournamentId, (err, tournament) => {
@@ -19,9 +21,21 @@ module.exports = {
       })
   },
 
+  getBySlug: (slug, callback) => {
+    Tournament.findOne({slug: slug})
+    .populate([
+      {path: 'team.team_id', model: 'Team', select: '_id name info logo'}
+    ])
+    .lean()
+    .exec((err, tournament) => {
+      return callback(err, tournament);
+    });
+  },
+
   createNewTournament: (data, callback) => {
     let newTournament = new Tournament(data);
-    newTournament.save((err) => {
+    newTournament.slug = slug(newTournament.name,'-') + '-' + newTournament._id.toString().slice(0,5);
+    newTournament.save((err) => { 
       return callback(err, newTournament);
     })
   },

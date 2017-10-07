@@ -8,7 +8,7 @@ router.get('/create', tournamentController.renderCreate);
 
 router.get('/list', tournamentController.renderListTournament);
 
-router.get('/score/:tournamentId', tournamentController.renderScore);
+router.get('/score/:slug', tournamentController.renderScore);
 
 router.get('/edit/:id', tournamentController.renderUpdate);
 

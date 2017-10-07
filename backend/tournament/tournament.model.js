@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const tournamentSchema = new mongoose.Schema({
   name: { type: String, required: true},
+  slug: String,
   location: String,
   info: String,
   logo: String,

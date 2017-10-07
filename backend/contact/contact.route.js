@@ -7,8 +7,8 @@ const contactController = require('./contact.controller');
 
 
 
-router.get('/', contactController.getContact);
-router.post('/', contactController.postContact);
+router.get('/contact', contactController.getContact);
+router.post('/contact', contactController.postContact);
 
 
 

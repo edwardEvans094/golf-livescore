@@ -1,4 +1,4 @@
-FROM node:6-slim
+FROM node:6.11.4
 
 COPY . /starter
 COPY package.json /starter/package.json

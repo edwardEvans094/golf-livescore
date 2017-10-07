@@ -13,5 +13,22 @@ module.exports = {
     str = str.replace(/ + /g," ");
     str = str.trim(); 
     return str;
+  },
+
+  toId36: (id) => {
+    let alphabet = '0123456789abcdefghijklmnopqrstuvwxuz';
+    let length = alphabet.length;
+    if (id == 0) {
+      return '0';
+    }
+    let q = id;
+    let r = 0;
+    let ret = '';
+    while (q !== 0) {
+      r = q % length;
+      q = Math.floor(q / length);
+      ret = alphabet[r] + ret;
+    }
+    return ret;
   }
 }

@@ -16,6 +16,8 @@ block content
 					if val.typr == 2
 						|  Thi đấu
 				p
-					a(href='/tournament/score/' + val._id) Total Score »
+					a(href='/tournament/score/' + val.slug) Total Score »
 					a(href='/tournament/edit/' + val._id) Edit details »
 					a(href='/match/list/' + val._id) Match list »
+	script
+		include listTournament.js

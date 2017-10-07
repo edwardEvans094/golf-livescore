@@ -46,27 +46,12 @@ module.exports = {
   },
 
   renderScore: (req, res) => {
-    let tournamentId = req.params.tournamentId;
-    async.parallel({
-      getTournament: (asyncCallback) => {
-        tournamentService.getByIdPopulateTeam(tournamentId, asyncCallback);
-      }, 
-      getSingleMatch: (asyncCallback) => {
-        matchService.getAllSingleMatch(tournamentId, asyncCallback);
-      },
-      getFoursomesMatch: (asyncCallback) => {
-        matchService.getAllFoursomesMatch(tournamentId, asyncCallback);
-      }
-    }, (errs, results) => {
-      if(errs){
-        //todo handle errors
-      }
-      console.log(results);
-      return res.render('tournament/score', {results: results});
-      // return res.json(results);
-    });
-
-    
+    let slug = req.params.slug;
+    let host = req.get('host');
+    let path = host.split('.');
+    path[0] = 'livescore';
+    let newUrl = path.join('.');
+    return res.redirect('http://'+newUrl+'/'+slug);
   },
 
   renderUpdate: (req, res) => {

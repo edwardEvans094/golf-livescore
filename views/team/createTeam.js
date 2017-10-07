@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
       success : function(data) {
         console.log(data);
         $("#golferAvar").attr("src","/uploads/" + data.filename);
-        $('input[name=userAvatar]').val(data.filename);
+        $('input[name=logo]').val(data.filename);
       }
     });
   })   

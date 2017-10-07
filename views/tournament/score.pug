@@ -1,420 +1,529 @@
 #{list}
 doctype html
 html
-  head
-    title VHandicap
-    meta(charset='UTF-8')
-    link(rel='shortcut icon', href='/favicon.png')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='/frontend/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/frontend/css/style.css') 
-    link(rel='stylesheet', href='/frontend/css/setmedia.css')
-    link(href='/frontend/css/font-awesome.css', rel='stylesheet')
-    script(src='/frontend/js/jquery-1.11.1.min.js')
-    script(src='/frontend/js/bootstrap.min.js')
-    script(src='/js/main.js')
-    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
-  body
-    //- nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.__padding0
-      .container.__row
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        .d-flex
-          a.navbar-brand(href='#')
-            .__logo
-              img.w_100(src='image/logo.png', alt='GolferVN')
-        #navbarSupportedContent.navbar-collapse.collapse
-          ul.navbar-nav.flex-row.ml-auto.justify-content-between
-            li.nav-item.active
-              a.nav-link(href='#') Bảng Xếp Hạng
-            li.nav-item
-              a.nav-link(href='#') Giải đấu
-            li.nav-item
-              a.nav-link(href='#') Người chơi
-          form.form-inline.my-2.my-lg-0
-            input.form-control.mr-sm-2(type='text', placeholder='Search')
-            button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
-    .clearfix-10
-    section
-      .container.__row
-        //- .__fight
-          ._row
-            .col-md-5.col-sm-5.col-sm-416.__floatleft
-              .__1a
-                img.w_100(src='image/doi1.png', alt='images')
-            .col-md-2.col-sm-166.__floatleft
-              .__1a.and-flight
-                img.w_100(src='image/vs.png', alt='images')
-            .col-md-5.col-sm-416.__floatleft
-              .__1a
-                img.w_100(src='image/doi1.png', alt='images')
-          .clearfix-20
-          ._row
-            .col-md-12
-              .flight-title.text-center
-                .title-parent.text-uppercase
-                  h3.font-weight-bold VGA UNION CUP 2017
-                .desciption.text-uppercase
-                  h5 FLC sầm sơn golf link | 24-26 tháng 3
-        .clearfix-20
-        .fulltabs
-          ._row
-            ul.nav.nav-tabs.w_100.fs_23(role='tablist')
-              li.nav-item.col-md-6.__colfix
-                a.nav-link.active.text-uppercase.text-center(data-toggle='tab', href='#home', role='tab') Bảng Xếp hạng
-              li.nav-item.col-md-6.__colfix
-                a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#profile', role='tab') Giới thiệu
-            // Tab panes
-            .tab-content.w_100.bc_ffffff
-              #home.tab-pane.active(role='tabpanel')
-                .clearfix-10
-                ._row.clearfix
-                  .col-md-12.text-center
-                    h3.flight-result.text-uppercase.font-weight-bold kết quả
-                    //- p.font-italic (Cập nhật mỗi 4 phút)
-                  .clearfix-10
-                  .flight-one.w_100
-                    .col-md-6.col_60.__colfix.__floatleft
-                      .col-md-5.__colfix.col-sm-416.__floatleft
-                        .icon-flight
-                          img.w_100.h_100(src='upload/' + results.getTournament.team[0].team_id.logo)
-                      .col-md-7.col-583.__floatleft.fs_23
-                        .name-flight
-                          .text-uppercase.text-center.font-weight-bold #{results.getTournament.team[0].team_id.name}
-                        .clearfix-20
-                        .flight-poit.text-center
-                          .font-weight-bold #{results.getTournament.team[0].score}
-                          p điểm
-                      .clearfix-10
-                      .clearfix
-                    .col-md-6.col_60.__colfix.__floatleft
-                      .col-md-7.col-583.__floatleft.fs_23
-                        .name-flight
-                          .text-uppercase.text-center.font-weight-bold #{results.getTournament.team[1].team_id.name}
-                        .clearfix-20
-                        .flight-poit.text-center
-                          .font-weight-bold #{results.getTournament.team[1].score}
-                          p điểm
-                      .col-md-5.col-sm-416.__colfix.__floatleft
-                        .icon-flight
-                          img.w_100.h_100(src='upload/' + results.getTournament.team[1].team_id.logo)
-                      .clearfix-10
-                      .vhandicap
-                        .col-md-12
-                      .clearfix
-              // end home
-              #profile.tab-pane(role='tabpanel')
-        // end fulltask
-        .clearfix-20
-        .session-tabs
-          ._row
-            ul.nav.nav-tabs.w_100.fs_23(role='tablist')
-              li.nav-item.col-md-4.__colfix
-                a.nav-link.active.text-uppercase.text-center(data-toggle='tab', href='#singles', role='tab') Singles
-              //- li.nav-item.col-md-4.__colfix
-              //-   a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#four-ball', role='tab') Four-Ball
-              li.nav-item.col-md-4.__colfix
-                a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#foursomes', role='tab') Foursomes
-            .tab-content.w_100.bc_ffffff
-              #singles.tab-pane.active(role='tabpanel')
-                each match, matchId in results.getSingleMatch
-                  .match__wrapper
-                    .clearfix-10
-                    ._row
-                      // show item
-                      .item.w_100.box-match-1
-                        .match__title.clearfix.fs_23
-                          .col-md-2.col-sm-166.__colfix.__floatleft
-                            .title-flight
-                              .font-weight-bold.font-12 #{match.name}
-                          .col-md-10.col_833.__floatleft.text-center.text-uppercase
-                            .timeago__wrap.text-center.text-uppercase
-                              .font-weight-bold Ngày thi đấu: #{match.time}
-                              .font-weight-bold Tee time: #{match.tee_time}
-                        .clearfix-10
-                        .col-md-3.col_25.__floatleft
-                          .match__team.match__team__usa.match__winner.bc_0f3d9c
-                            .clearfix-20
-                            .col-md-12.__colfix
-                              .match__team__players.text-center
-                                img.w_100.wh_100px.h_100(src='image/avatar1.png')
-                              .clearfix-20
-                              .match__team__player--name.c_ffffff.text-center
-                                //- span.match__team__player--andrew.fs_23.font-12 #{match.golfer[0].golfer_id.name}
-                                span.match__team__player--firstname #{match.golfer[0].golfer_id.name}
-                              .clearfix-20
-                              .match__team__score.c_ffffff.text-center.fs_23
-                                span.match__team__score--large.font-weight-bold 4
-                                span.match__team__score--spacer.font-weight-bold &
-                                span.match__team__score--small 3
-                            .col-md-4
-                        .col-md-6.col_60.__floatleft.fs_23
-                          .match__holes.text-center
-                            .match__holes-front
-                              each par, parIndex in match.par
-                                if match.golfer[0].display[parIndex] == 2
-                                  i.fa.fa-circle(aria-hidden='true', style='color: blue;')
-                                else if match.golfer[1].display[parIndex] == 2
-                                  i.fa.fa-circle(aria-hidden='true', style='color: red;')
-                                else if match.golfer[0].display[parIndex] == 3 && match.golfer[1].display[parIndex] == 3
-                                  i.fa.fa-circle(aria-hidden='true', style='color: #bdbcbc;')
-                                else
-                                  i.fa.fa-circle(aria-hidden='true')
-                            .clearfix-40
-                            .match__holes--more.w_100(onclick='showdetail(1)')
-                              //- img.img-center(src='/frontend/images/read_more.png')
-                              i.img-center.fa.fa-chevron-down(aria-hidden='true')
-                        .col-md-3.col_25.__floatleft
-                          .match__team.match__team__usa.match__winner.match__team_right
-                            .clearfix-20
-                            .col-md-12.__colfix
-                              .match__team__players.text-center
-                                img.w_100.wh_100px.h_100(src='image/avatar2.png')
-                              .clearfix-20
-                              .match__team__player--name.text-center
-                                //- span.match__team__player--lastname.font-weight-bold.fs_23.font-12 ANDREW
-                                span.match__team__player--firstname #{match.golfer[1].golfer_id.name}
-                              .clearfix-20
-                              .match__team__score.c_ffffff.text-center.fs_23.hidden
-                                span.match__team__score--large.font-weight-bold 4
-                                span.match__team__score--spacer.font-weight-bold &
-                                span.match__team__score--small 3
-                        .clearfix
-                      // end show item
-                      .item.box-match-2.hidden
-                        .match.singles
-                          .text-center
-                            | Tran 12
-                          .clearfix-10
-                          .match__holes__expanded.clearfix(onclick='showdetail(0)')
-                            if (results && results.getSingleMatch)
-                              each match, matchIndex in results.getSingleMatch
-                                .col-sm-12
-                                  table#mainTable.table.table-striped
-                                    thead
-                                      tr
-                                        th Hố
-                                        each val, index in match.par
-                                          th= index + 1
-                                    thead
-                                      tr
-                                        th Par
-                                        each val, index in match.par
-                                          th= val
-                                    tbody
-                                      each val, index in match.golfer
-                                        tr
-                                          td= val.golfer_id.name
-                                          each score, indexScore in match.par
-                                            if match.golfer[index].result[indexScore]
-                                              if match.golfer[index].display[indexScore] == 2
-                                                if index == 0
-                                                  td.highlight-red= match.golfer[index].result[indexScore]
-                                                else
-                                                  td.highlight-blue= match.golfer[index].result[indexScore]
-                                              else if match.golfer[index].display[indexScore] == 3
-                                                td.highlight-unknow= 0
-                                              else
-                                                td= match.golfer[index].result[indexScore]
-                                            else 
-                                              td= 0
-                            .col-md-1.col-tt-1.__floatleft.__colfix
-                          .match__team.match__winner.clearfix
-                            .match__team__players
-                              .col-md-3.col_25.match__team_left.__floatleft
-                                .w_100.macht_team_one
-                                  .wh_100px
-                                    img.w_100.h_100(src='uploads/' + match.golfer[0].golfer_id.avatar, alt='avatar')
-                                  .macht_team_name.padding0_5
-                                    //- .first_name.text-uppercase.font-weight-bold Phương
-                                    .last_name.font-italic #{match.golfer[0].golfer_id.name}
-                              .col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
-                                .text-center.font-weight-bold.macht_team_score
-                                  ul
-                                    each score, scoreIndex in match.golfer[0].result
-                                      li
-                                        if match.golfer[0].display[scoreIndex] == 2
-                                          span(style='background-color: blue;') #{score}
-                                        else if match.golfer[0].display[scoreIndex] == 3
-                                          span(style='background-color: #efefef;color: #adabab;') 0
-                                        else
-                                          span #{score}
-                              if match.golfer[0].total_result > match.golfer[1].total_result
-                                .col-md-1.col-tt-1.__floatleft.__colfix.text-center.score__winner.fs_23.c_ffffff
-                                  .match_score_winner
-                                    span.match__team__score--large.font-weight-bold #{match.golfer[0].total_result}
-                                    span.match__team__score--spacer.font-weight-bold &
-                                    span.match__team__score--small #{match.golfer[1].total_result}
-                            .clearfix
-                            .match__team__players
-                              .col-md-3.col_25.match__team_left.__floatleft
-                                .w_100.macht_team_one
-                                  .wh_100px
-                                    img.w_100.h_100(src='uploads/' + match.golfer[1].golfer_id.avatar, alt='avatar')
-                                  .macht_team_name.padding0_5
-                                    //- .first_name.text-uppercase.font-weight-bold Nam
-                                    .last_name.font-italic #{match.golfer[1].golfer_id.name}
-                              .col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
-                                .text-center.font-weight-bold.macht_team_score
-                                  ul
-                                    each score, scoreIndex in match.golfer[1].result
-                                      li
-                                        if match.golfer[1].display[scoreIndex] == 2
-                                          span(style='background-color: red;') #{score}
-                                        else if match.golfer[1].display[scoreIndex] == 3
-                                          span(style='background-color: #efefef;color: #adabab;') 0
-                                        else
-                                          span #{score}
-                              if match.golfer[0].total_result < match.golfer[1].total_result
-                                .col-md-1.col-tt-1.__floatleft.__colfix.text-center.score__winner.fs_23.c_ffffff
-                                  .match_score_winner
-                                    span.match__team__score--large.font-weight-bold #{match.golfer[1].total_result}
-                                    span.match__team__score--spacer.font-weight-bold &
-                                    span.match__team__score--small #{match.golfer[0].total_result}
-              // end single
-              //- #four-ball.tab-pane(role='tabpanel')
-                .clearfix-10
-                ._row
-                  .item.w_100
-                    .match__title.clearfix.fs_23
-                      .col-md-2.col-sm-166.__floatleft
-                        .title-flight
-                          .font-weight-bold Trận 28
-                      .col-md-10.col_833.__floatleft.text-center.text-uppercase
-                        .timeago__wrap.text-center.text-uppercase
-                          .font-weight-bold Ngày thi đấu: 22/02/2017
-                          .font-weight-bold Tee time: 10:28
-                    .clearfix-20
-                    .box-match.font-12
-                      .col-md-3.col_25.__floatleft
-                        .match__team.match__team__usa.match__team_left
-                          .match__team__players
-                            .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
-                              img.w_100(src='image/avatar1.png', alt='')
-                            .col-md-7.col-583.__floatleft
-                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                              .match__team__player--firstname Hùng phạm
-                            .clearfix
-                          .match__team__players
-                            .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
-                              img.w_100(src='image/avatar2.png', alt='')
-                            .col-md-7.col-583.__floatleft
-                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                              .match__team__player--firstname Hùng phạm
-                            .clearfix
-                      .col-md-6.col_60.__floatleft.fs_23
-                        .match__holes.text-center
-                          .match__holes-front
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                          .match__holes-back
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                            i.fa.fa-circle(aria-hidden='true')
-                        .clearfix-40
-                        .match__holes--more.w_100
-                          //- img.img-center(src='/frontend/images/read_more.png')
-                          i.img-center.fa.fa-chevron-down(aria-hidden='true')
-                      .col-md-3.col_25.__floatleft
-                        .match__team.match__team__usa.bc_dd0222.c_ffffff
-                          .match__team__players
-                            .col-md-7.col-583.col-xs-7.__floatleft
-                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                              .match__team__player--firstname Hùng phạm
-                            .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
-                              img.w_100(src='image/avatar1.png', alt='')
-                            .clearfix
-                          .match__team__players
-                            .col-md-7.col-583.col-xs-5.__floatleft
-                              .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                              .match__team__player--firstname Hùng phạm
-                            .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
-                              img.w_100(src='image/avatar2.png', alt='')
-                            .clearfix
-              // end four-ball
-              #foursomes.tab-pane(role='tabpanel')
-                each match, matchId in results.getFoursomesMatch
-                  .clearfix-10
-                  ._row
-                    .item.w_100.box-match-1
-                      .match__title.clearfix.fs_23
-                        .col-md-2.col-sm-166.__floatleft
-                          .title-flight
-                            .font-weight-bold #{match.name}
-                        .col-md-10.col_833.__floatleft.text-center.text-uppercase
-                          .timeago__wrap.text-center.text-uppercase
-                            .font-weight-bold Ngày thi đấu: #{match.time}
-                            .font-weight-bold Tee time: #{match.tee_time}
-                      .clearfix-20
-                      .box-match.font-12
-                        .col-md-3.col_25.__floatleft
-                          .match__team.match__team__usa.match__team_left
-                            .match__team__players
-                              .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
-                                img.w_100(src='uploads/' + match.golfer[0].golfer_id.logo)
-                              .col-md-7.col-583.__floatleft
-                                //- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                                .match__team__player--firstname #{match.golfer[0].golfer_id.name}
-                              .clearfix
-                            .match__team__players
-                              .col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
-                                img.w_100(src='uploads/' + match.golfer[1].golfer_id.logo)
-                              .col-md-7.col-583.__floatleft
-                                //- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                                .match__team__player--firstname #{match.golfer[1].golfer_id.name}
-                              .clearfix
-                        .col-md-6.col_60.__floatleft.fs_23
-                          .match__holes.text-center
-                            .match__holes-front
-                              each par, parIndex in match.par
-                                if match.golfer[0].display[parIndex] == 2 || match.golfer[1].display[parIndex] == 2
-                                  i.fa.fa-circle(aria-hidden='true', style='color: blue;')
-                                else if match.golfer[2].display[parIndex] == 2 || match.golfer[3].display[parIndex] ==2
-                                  i.fa.fa-circle(aria-hidden='true', style='color: red;')
-                                else if match.golfer[0].display[parIndex] == 3 && match.golfer[1].display[parIndex] == 3 && match.golfer[2].display[parIndex] == 3 && match.golfer[3].display[parIndex] == 3
-                                  i.fa.fa-circle(aria-hidden='true', style='color: #bdbcbc;')
-                                else
-                                  i.fa.fa-circle(aria-hidden='true')
-                          .clearfix-40
-                          .match__holes--more.w_100(onclick='showdetail(1)')
-                            //- img.img-center(src='/frontend/images/read_more.png')
-                            i.img-center.fa.fa-chevron-down(aria-hidden='true')
-
-                        .col-md-3.col_25.__floatleft
-                          .match__team.match__team__usa.bc_dd0222.c_ffffff
-                            .match__team__players
-                              .col-md-7.col-583.col-xs-7.__floatleft
-                                //- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                                .match__team__player--firstname #{match.golfer[2].golfer_id.name}
-                              .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
-                                img.w_100(src='uploads/' + match.golfer[2].golfer_id.logo)
-                              .clearfix
-                            .match__team__players
-                              .col-md-7.col-583.col-xs-5.__floatleft
-                                //- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
-                                .match__team__player--firstname #{match.golfer[3].golfer_id.name}
-                              .col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
-                                img.w_100(src='uploads/' + match.golfer[1].golfer_id.logo)
-                              .clearfix
-                    // foursomes box-match-2
-                    .item.w_100.box-match-2
-                    // end foursomes box-match-2
-        // end session-tabs
-    footer
-      .clearfix-20
-      .container.__row
-        .col-md-12.__colfix
-          .footer-root
-            span
-              | Hệ thống bảng xếp hạng cập nhật điểm số golfer, thống kê và lịch trình giải đấu Golf tại Việt Nam Phát triển bởi Golfervn.com
+	head
+		title VHandicap
+		meta(charset='UTF-8')
+		link(rel='shortcut icon', href='/favicon.png')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet', href='/frontend/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/frontend/css/style.css') 
+		link(rel='stylesheet', href='/frontend/css/setmedia.css')
+		link(href='/frontend/css/font-awesome.css', rel='stylesheet')
+		script(src='/frontend/js/jquery-1.11.1.min.js')
+		script(src='/frontend/js/bootstrap.min.js')
+		script(src='/js/main.js')
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+	body
+		//- nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.__padding0
+			.container.__row
+				button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+					span.navbar-toggler-icon
+				.d-flex
+					a.navbar-brand(href='#')
+						.__logo
+							img.w_100(src='image/logo.png', alt='GolferVN')
+				#navbarSupportedContent.navbar-collapse.collapse
+					ul.navbar-nav.flex-row.ml-auto.justify-content-between
+						li.nav-item.active
+							a.nav-link(href='#') Bảng Xếp Hạng
+						li.nav-item
+							a.nav-link(href='#') Giải đấu
+						li.nav-item
+							a.nav-link(href='#') Người chơi
+					form.form-inline.my-2.my-lg-0
+						input.form-control.mr-sm-2(type='text', placeholder='Search')
+						button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+		.clearfix-10
+		section
+			.container.__row
+				//- .__fight
+					._row
+						.col-md-5.col-sm-5.col-sm-416.__floatleft
+							.__1a
+								img.w_100(src='image/doi1.png', alt='images')
+						.col-md-2.col-sm-166.__floatleft
+							.__1a.and-flight
+								img.w_100(src='image/vs.png', alt='images')
+						.col-md-5.col-sm-416.__floatleft
+							.__1a
+								img.w_100(src='image/doi1.png', alt='images')
+					.clearfix-20
+					._row
+						.col-md-12
+							.flight-title.text-center
+								.title-parent.text-uppercase
+									h3.font-weight-bold VGA UNION CUP 2017
+								.desciption.text-uppercase
+									h5 FLC sầm sơn golf link | 24-26 tháng 3
+				.clearfix-20
+				.fulltabs
+					._row
+						ul.nav.nav-tabs.w_100.fs_23(role='tablist')
+							li.nav-item.col-md-6.__colfix
+								a.nav-link.active.text-uppercase.text-center(data-toggle='tab', href='#home', role='tab') Bảng Xếp hạng
+							li.nav-item.col-md-6.__colfix
+								a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#profile', role='tab') Giới thiệu
+						// Tab panes
+						.tab-content.w_100.bc_ffffff
+							#home.tab-pane.active(role='tabpanel')
+								.clearfix-10
+								._row.clearfix
+									.col-md-12.text-center
+										h3.flight-result.text-uppercase.font-weight-bold kết quả
+										//- p.font-italic (Cập nhật mỗi 4 phút)
+									.clearfix-10
+									.flight-one.w_100
+										.col-md-6.col_60.__colfix.__floatleft
+											.col-md-5.__colfix.col-sm-416.__floatleft
+												.icon-flight
+													img.w_100.h_100(src='/uploads/' + results.getTournament.team[0].team_id.logo)
+											.col-md-7.col-583.__floatleft.fs_23
+												.name-flight
+													.text-uppercase.text-center.font-weight-bold #{results.getTournament.team[0].team_id.name}
+												.clearfix-20
+												.flight-poit.text-center
+													.font-weight-bold #{results.getTournament.team[0].score}
+													p điểm
+											.clearfix-10
+											.clearfix
+										.col-md-6.col_60.__colfix.__floatleft
+											.col-md-7.col-583.__floatleft.fs_23
+												.name-flight
+													.text-uppercase.text-center.font-weight-bold #{results.getTournament.team[1].team_id.name}
+												.clearfix-20
+												.flight-poit.text-center
+													.font-weight-bold #{results.getTournament.team[1].score}
+													p điểm
+											.col-md-5.col-sm-416.__colfix.__floatleft
+												.icon-flight
+													img.w_100.h_100(src='/uploads/' + results.getTournament.team[1].team_id.logo)
+											.clearfix-10
+											.vhandicap
+												.col-md-12
+											.clearfix
+							// end home
+							#profile.tab-pane(role='tabpanel')
+				// end fulltask
+				.clearfix-20
+				.session-tabs
+					._row
+						ul.nav.nav-tabs.w_100.fs_23(role='tablist')
+							li.nav-item.col-md-4.__colfix
+								a.nav-link.active.text-uppercase.text-center(data-toggle='tab', href='#singles', role='tab') Singles
+							//- li.nav-item.col-md-4.__colfix
+							//-   a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#four-ball', role='tab') Four-Ball
+							li.nav-item.col-md-4.__colfix
+								a.nav-link.text-uppercase.text-center(data-toggle='tab', href='#foursomes', role='tab') Foursomes
+						.tab-content.w_100.bc_ffffff
+							#singles.tab-pane.active(role='tabpanel')
+								each match, matchId in results.getSingleMatch
+									.match__wrapper
+										.clearfix-10
+										._row
+											// show item
+											.item.w_100.box-match-1
+												.match__title.clearfix.fs_23
+													.col-md-2.col-sm-166.__colfix.__floatleft
+														.title-flight
+															.font-weight-bold.font-12 #{match.name}
+													.col-md-10.col_833.__floatleft.text-center.text-uppercase
+														.timeago__wrap.text-center.text-uppercase
+															.font-weight-bold Ngày thi đấu: #{match.time.toLocaleDateString()}
+															.font-weight-bold Tee time: #{match.tee_time}
+												.clearfix-10
+												.col-md-3.col_25.__floatleft
+													.match__team.match__team__usa.match__winner.bc_0f3d9c
+														.clearfix-20
+														.col-md-12.__colfix
+															.match__team__players.text-center
+																img.w_100.wh_100px.h_100(src='/uploads/'+match.golfer[0].golfer_id.avatar)
+															.clearfix-20
+															.match__team__player--name.c_ffffff.text-center
+																//- span.match__team__player--andrew.fs_23.font-12 #{match.golfer[0].golfer_id.name}
+																span.match__team__player--firstname #{match.golfer[0].golfer_id.name}
+															.clearfix-20
+															.match__team__score.c_ffffff.text-center.fs_23
+																span.match__team__score--large.font-weight-bold 4
+																span.match__team__score--spacer.font-weight-bold &
+																span.match__team__score--small 3
+														.col-md-4
+												.col-md-6.col_60.__floatleft.fs_23
+													.match__holes.text-center
+														.match__holes-front
+															each par, parIndex in match.par
+																if match.golfer[0].display[parIndex] == 2
+																	i.fa.fa-circle(aria-hidden='true', style='color: blue;')
+																else if match.golfer[1].display[parIndex] == 2
+																	i.fa.fa-circle(aria-hidden='true', style='color: red;')
+																else if match.golfer[0].display[parIndex] == 3 && match.golfer[1].display[parIndex] == 3
+																	i.fa.fa-circle(aria-hidden='true', style='color: #bdbcbc;')
+																else
+																	i.fa.fa-circle(aria-hidden='true')
+														.clearfix-40
+														.match__holes--more.w_100(onclick='showdetail(1)')
+															//- img.img-center(src='/frontend/images/read_more.png')
+															i.img-center.fa.fa-chevron-down(aria-hidden='true')
+												.col-md-3.col_25.__floatleft
+													.match__team.match__team__usa.match__winner.match__team_right
+														.clearfix-20
+														.col-md-12.__colfix
+															.match__team__players.text-center
+																//- img.w_100.wh_100px.h_100(src='image/avatar2.png')
+																img.w_100.wh_100px.h_100(src='/uploads/'+match.golfer[1].golfer_id.avatar)
+															.clearfix-20
+															.match__team__player--name.text-center
+																//- span.match__team__player--lastname.font-weight-bold.fs_23.font-12 ANDREW
+																span.match__team__player--firstname #{match.golfer[1].golfer_id.name}
+															.clearfix-20
+															.match__team__score.c_ffffff.text-center.fs_23.hidden
+																span.match__team__score--large.font-weight-bold 4
+																span.match__team__score--spacer.font-weight-bold &
+																span.match__team__score--small 3
+												.clearfix
+											// end show item
+											.item.box-match-2.hidden
+												.match.singles
+													.text-center
+														| Tran 12
+													.clearfix-10
+													.match__holes__expanded.clearfix(onclick='showdetail(0)')
+														if (results && results.getSingleMatch)
+															each match, matchIndex in results.getSingleMatch
+																.col-sm-12
+																	table#mainTable.table.table-striped
+																		thead
+																			tr
+																				th Hố
+																				each val, index in match.par
+																					th= index + 1
+																		thead
+																			tr
+																				th Par
+																				each val, index in match.par
+																					th= val
+																		tbody
+																			each val, index in match.golfer
+																				tr
+																					td= val.golfer_id.name
+																					each score, indexScore in match.par
+																						if match.golfer[index].result[indexScore]
+																							if match.golfer[index].display[indexScore] == 2
+																								if index == 0
+																									td.highlight-red= match.golfer[index].result[indexScore]
+																								else
+																									td.highlight-blue= match.golfer[index].result[indexScore]
+																							else if match.golfer[index].display[indexScore] == 3
+																								td.highlight-unknow= 0
+																							else
+																								td= match.golfer[index].result[indexScore]
+																						else 
+																							td= 0
+														.col-md-1.col-tt-1.__floatleft.__colfix
+													.match__team.match__winner.clearfix
+														.match__team__players
+															.col-md-3.col_25.match__team_left.__floatleft
+																.w_100.macht_team_one
+																	.wh_100px
+																		img.w_100.h_100(src='/uploads/' + match.golfer[0].golfer_id.avatar, alt='avatar')
+																	.macht_team_name.padding0_5
+																		//- .first_name.text-uppercase.font-weight-bold Phương
+																		.last_name.font-italic #{match.golfer[0].golfer_id.name}
+															.col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
+																.text-center.font-weight-bold.macht_team_score
+																	ul
+																		each score, scoreIndex in match.golfer[0].result
+																			li
+																				if match.golfer[0].display[scoreIndex] == 2
+																					span(style='background-color: blue;') #{score}
+																				else if match.golfer[0].display[scoreIndex] == 3
+																					span(style='background-color: #efefef;color: #adabab;') 0
+																				else
+																					span #{score}
+															if match.golfer[0].total_result > match.golfer[1].total_result
+																.col-md-1.col-tt-1.__floatleft.__colfix.text-center.score__winner.fs_23.c_ffffff
+																	.match_score_winner
+																		span.match__team__score--large.font-weight-bold #{match.golfer[0].total_result}
+																		span.match__team__score--spacer.font-weight-bold &
+																		span.match__team__score--small #{match.golfer[1].total_result}
+														.clearfix
+														.match__team__players
+															.col-md-3.col_25.match__team_left.__floatleft
+																.w_100.macht_team_one
+																	.wh_100px
+																		img.w_100.h_100(src='/uploads/' + match.golfer[1].golfer_id.avatar, alt='avatar')
+																	.macht_team_name.padding0_5
+																		//- .first_name.text-uppercase.font-weight-bold Nam
+																		.last_name.font-italic #{match.golfer[1].golfer_id.name}
+															.col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
+																.text-center.font-weight-bold.macht_team_score
+																	ul
+																		each score, scoreIndex in match.golfer[1].result
+																			li
+																				if match.golfer[1].display[scoreIndex] == 2
+																					span(style='background-color: red;') #{score}
+																				else if match.golfer[1].display[scoreIndex] == 3
+																					span(style='background-color: #efefef;color: #adabab;') 0
+																				else
+																					span #{score}
+															if match.golfer[0].total_result < match.golfer[1].total_result
+																.col-md-1.col-tt-1.__floatleft.__colfix.text-center.score__winner.fs_23.c_ffffff
+																	.match_score_winner
+																		span.match__team__score--large.font-weight-bold #{match.golfer[1].total_result}
+																		span.match__team__score--spacer.font-weight-bold &
+																		span.match__team__score--small #{match.golfer[0].total_result}
+							// end single
+							//- #four-ball.tab-pane(role='tabpanel')
+								.clearfix-10
+								._row
+									.item.w_100
+										.match__title.clearfix.fs_23
+											.col-md-2.col-sm-166.__floatleft
+												.title-flight
+													.font-weight-bold Trận 28
+											.col-md-10.col_833.__floatleft.text-center.text-uppercase
+												.timeago__wrap.text-center.text-uppercase
+													.font-weight-bold Ngày thi đấu: 22/02/2017
+													.font-weight-bold Tee time: 10:28
+										.clearfix-20
+										.box-match.font-12
+											.col-md-3.col_25.__floatleft
+												.match__team.match__team__usa.match__team_left
+													.match__team__players
+														.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+															img.w_100(src='image/avatar1.png', alt='')
+														.col-md-7.col-583.__floatleft
+															.match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+															.match__team__player--firstname Hùng phạm
+														.clearfix
+													.match__team__players
+														.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+															img.w_100(src='image/avatar2.png', alt='')
+														.col-md-7.col-583.__floatleft
+															.match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+															.match__team__player--firstname Hùng phạm
+														.clearfix
+											.col-md-6.col_60.__floatleft.fs_23
+												.match__holes.text-center
+													.match__holes-front
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+													.match__holes-back
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+														i.fa.fa-circle(aria-hidden='true')
+												.clearfix-40
+												.match__holes--more.w_100
+													//- img.img-center(src='/frontend/images/read_more.png')
+													i.img-center.fa.fa-chevron-down(aria-hidden='true')
+											.col-md-3.col_25.__floatleft
+												.match__team.match__team__usa.bc_dd0222.c_ffffff
+													.match__team__players
+														.col-md-7.col-583.col-xs-7.__floatleft
+															.match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+															.match__team__player--firstname Hùng phạm
+														.col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+															img.w_100(src='image/avatar1.png', alt='')
+														.clearfix
+													.match__team__players
+														.col-md-7.col-583.col-xs-5.__floatleft
+															.match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+															.match__team__player--firstname Hùng phạm
+														.col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+															img.w_100(src='image/avatar2.png', alt='')
+														.clearfix
+							// end four-ball
+							#foursomes.tab-pane(role='tabpanel')
+								each match, matchId in results.getFoursomesMatch
+									.clearfix-10
+									._row
+										.item.w_100.box-match-1
+											.match__title.clearfix.fs_23
+												.col-md-2.col-sm-166.__floatleft
+													.title-flight
+														.font-weight-bold #{match.name}
+												.col-md-10.col_833.__floatleft.text-center.text-uppercase
+													.timeago__wrap.text-center.text-uppercase
+														.font-weight-bold Ngày thi đấu: #{match.time.toLocaleDateString()}
+														.font-weight-bold Tee time: #{match.tee_time}
+											.clearfix-20
+											.box-match.font-12
+												.col-md-3.col_25.__floatleft
+													.match__team.match__team__usa.match__team_left
+														.match__team__players
+															.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+																img.w_100(src='/uploads/'+match.golfer[0].golfer_id.avatar)
+															.col-md-7.col-583.__floatleft
+																//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																.match__team__player--firstname #{match.golfer[0].golfer_id.name}
+															.clearfix
+														.match__team__players
+															.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+																img.w_100(src='/uploads/'+match.golfer[1].golfer_id.avatar)
+															.col-md-7.col-583.__floatleft
+																//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																.match__team__player--firstname #{match.golfer[1].golfer_id.name}
+															.clearfix
+												.col-md-6.col_60.__floatleft.fs_23
+													.match__holes.text-center
+														.match__holes-front
+															each par, parIndex in match.par
+																if match.golfer[0].display[parIndex] == 2 || match.golfer[1].display[parIndex] == 2
+																	i.fa.fa-circle(aria-hidden='true', style='color: blue;')
+																else if match.golfer[2].display[parIndex] == 2 || match.golfer[3].display[parIndex] == 2
+																	i.fa.fa-circle(aria-hidden='true', style='color: red;')
+																else if match.golfer[0].display[parIndex] == 3 && match.golfer[1].display[parIndex] == 3 && match.golfer[2].display[parIndex] == 3 && match.golfer[3].display[parIndex] == 3
+																	i.fa.fa-circle(aria-hidden='true', style='color: #bdbcbc;')
+																else
+																	i.fa.fa-circle(aria-hidden='true')
+													.clearfix-40
+													.match__holes--more.w_100(onclick='showdetail(1)')
+														//- img.img-center(src='/frontend/images/read_more.png')
+														i.img-center.fa.fa-chevron-down(aria-hidden='true')
+												.col-md-3.col_25.__floatleft
+													.match__team.match__team__usa.bc_dd0222.c_ffffff
+														.match__team__players
+															.col-md-7.col-583.col-xs-7.__floatleft
+																//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																.match__team__player--firstname #{match.golfer[2].golfer_id.name}
+															.col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+																img.w_100(src='/uploads/'+match.golfer[2].golfer_id.avatar)
+															.clearfix
+														.match__team__players
+															.col-md-7.col-583.col-xs-5.__floatleft
+																//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																.match__team__player--firstname #{match.golfer[3].golfer_id.name}
+															.col-md-5.col-sm-416.col-xs-5.__colfix.wh_100px.__floatleft
+																img.w_100(src='/uploads/'+match.golfer[3].golfer_id.avatar)
+															.clearfix
+										// foursomes box-match-2
+										.item.w_100.box-match-2.hidden
+											.clearfix-10
+											.match__title.clearfix.fs_23
+												.col-md-2.col-sm-166.__floatleft
+													.title-flight
+														.font-weight-bold #{match.name}
+												.col-md-10.col_833.__floatleft.text-center.text-uppercase
+													.timeago__wrap.text-center.text-uppercase
+														.font-weight-bold Ngày thi đấu: #{match.time.toLocaleDateString()}
+														.font-weight-bold Tee time: #{match.tee_time}
+											.clearfix-20
+											.match.foursome
+												.clearfix-10
+												.match__holes__expanded.clearfix(onclick='showdetail(0)')
+													.col-sm-12
+														table#mainTable.table.table-striped
+															thead
+																tr
+																	th Hố
+																	each val, index in match.par
+																		th= index + 1
+															thead
+																tr
+																	th Par
+																	each val, index in match.par
+																		th= val
+															tbody
+																tr
+																	td= match.golfer[0].golfer_id.name + ' ' + match.golfer[1].golfer_id.name
+																	each score, indexScore in match.par
+																		if match.golfer[0].result[indexScore] || match.golfer[1].result[indexScore]
+																			if match.golfer[0].display[indexScore] == 2 || match.golfer[1].display[indexScore] == 2
+																				td.highlight-red= match.golfer[0].result[indexScore] < match.golfer[1].result[indexScore] ? match.golfer[0].result[indexScore] : match.golfer[1].result[indexScore]
+																			else if match.golfer[0].display[indexScore] == 3 || match.golfer[1].display[indexScore] == 3
+																					td.highlight-unknow= 0
+																			else
+																				td= match.golfer[0].result[indexScore] < match.golfer[1].result[indexScore] ? match.golfer[0].result[indexScore] : match.golfer[1].result[indexScore]
+																		else 
+																			td= 0
+																tr
+																	td= match.golfer[2].golfer_id.name + ' ' + match.golfer[3].golfer_id.name
+																	each score, indexScore in match.par
+																		if match.golfer[2].result[indexScore] || match.golfer[3].result[indexScore]
+																			if match.golfer[2].display[indexScore] == 2 || match.golfer[3].display[indexScore] == 2
+																				td.highlight-blue= match.golfer[2].result[indexScore] < match.golfer[3].result[indexScore] ? match.golfer[2].result[indexScore] : match.golfer[3].result[indexScore]
+																			else if match.golfer[2].display[indexScore] == 3 || match.golfer[3].display[indexScore] == 3
+																				td.highlight-unknow= 0
+																			else
+																				td= match.golfer[2].result[indexScore] < match.golfer[3].result[indexScore] ? match.golfer[2].result[indexScore] : match.golfer[3].result[indexScore]
+																		else 
+																			td= 0
+												.match__team.match__winner.clearfix
+													.match__team__players
+														.col-md-3.col_25.__floatleft
+															.match__team.match__team__usa.match__team_left
+																.match__team__players
+																	.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+																		img.w_100(src='/uploads/'+match.golfer[0].golfer_id.avatar)
+																	.col-md-7.col-583.__floatleft
+																		//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																		.match__team__player--firstname #{match.golfer[0].golfer_id.name}
+																	.clearfix
+																.match__team__players
+																	.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+																		img.w_100(src='/uploads/'+match.golfer[1].golfer_id.avatar)
+																	.col-md-7.col-583.__floatleft
+																		//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																		.match__team__player--firstname #{match.golfer[1].golfer_id.name}
+																	.clearfix
+														.col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
+															.text-center.font-weight-bold.macht_team_score
+																ul
+																	each par, scoreIndex in match.par
+																		li
+																			if match.golfer[0].display[scoreIndex] == 2 || match.golfer[1].display[scoreIndex] == 2
+																				span(style='background-color: blue;')= match.golfer[0].result[scoreIndex] < match.golfer[1].result[scoreIndex] ? match.golfer[0].result[scoreIndex] : match.golfer[1].result[scoreIndex]
+																			else if match.golfer[0].display[scoreIndex] == 3 && match.golfer[1].display[scoreIndex] == 3
+																				span(style='background-color: #efefef;color: #adabab;') 0
+																			else
+																				span=match.golfer[0].result[scoreIndex] < match.golfer[1].result[scoreIndex] ? match.golfer[0].result[scoreIndex] : match.golfer[1].result[scoreIndex]
+														.col-md-1.col-tt-1.__floatleft.__colfix.text-center
+													.clearfix
+													.match__team__players
+														.col-md-3.col_25.__floatleft
+															.match__team.match__team__usa.match__team_left_winner
+																.match__team__players
+																	.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+																		img.w_100(src='/uploads/'+match.golfer[2].golfer_id.avatar)
+																	.col-md-7.col-583.__floatleft
+																		//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																		.match__team__player--firstname #{match.golfer[2].golfer_id.name}
+																	.clearfix
+																.match__team__players
+																	.col-md-5.col-sm-416.__colfix.wh_100px.__floatleft
+																		img.w_100(src='/uploads/'+match.golfer[3].golfer_id.avatar)
+																	.col-md-7.col-583.__floatleft
+																		//- .match__team__player--lastname.font-weight-bold.fs_23 ANDREW
+																		.match__team__player--firstname #{match.golfer[3].golfer_id.name}
+																	.clearfix
+														.col-md-8.col-tt-8.__floatleft(onclick='showdetail(0)')
+															.text-center.font-weight-bold.macht_team_score
+																ul
+																	each par, scoreIndex in match.par
+																		li
+																			if match.golfer[2].display[scoreIndex] == 2 || match.golfer[3].display[scoreIndex] == 2
+																				span(style='background-color: red;')= match.golfer[2].result[scoreIndex] < match.golfer[3].result[scoreIndex] ? match.golfer[2].result[scoreIndex] : match.golfer[3].result[scoreIndex]
+																			else if match.golfer[2].display[scoreIndex] == 3 && match.golfer[3].display[scoreIndex] == 3
+																				span(style='background-color: #efefef;color: #adabab;') 0
+																			else
+																				span=match.golfer[2].result[scoreIndex] < match.golfer[3].result[scoreIndex] ? match.golfer[2].result[scoreIndex] : match.golfer[3].result[scoreIndex]
+														.col-md-1.col-tt-1.__floatleft.__colfix 
+				// end session-tabs
+		footer
+			.clearfix-20
+			.container.__row
+				.col-md-12.__colfix
+					.footer-root
+						span
+							| Hệ thống bảng xếp hạng cập nhật điểm số golfer, thống kê và lịch trình giải đấu Golf tại Việt Nam Phát triển bởi Golfervn.com

@@ -6,7 +6,7 @@ block content
   script(src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js')
 
   .page-header
-    h3 Create Tournament
+    h3 Edit Tournament
   .row
     .col-sm-6
       p Upload Tournament logo
@@ -15,40 +15,51 @@ block content
         .form-group
           label.control-label File Input
           input(type='file', name='myFile')
-
   form.form-horizontal(id='signup-form', method='POST')
-    input(type="hidden", name="tournamentId", value=tournament._id)
     input(type='hidden', name='_csrf', value=_csrf)
     input(type='hidden', name='userAvatar', value='')
-    input(type='hidden', name='member', value='')
+    input(type='hidden', name='teamArray', value='')
     .form-group
       label.col-sm-3.control-label(for='name') Tên giải đấu
       .col-sm-7
-        input.form-control(type='text', value=tournament.name, name='name', id='name', placeholder='Tên giải đấu', autofocus, required)
+        input.form-control(type='text', value=tournament.name,name='name', id='name', placeholder='Tên giải đấu', autofocus, required)
     .form-group
       label.col-sm-3.control-label(for='type') Thể loại
       .col-sm-7
-        select(name='type', value=tournament.type)
-          option(value='1') Giải đấu
-          option(value='2') Thi đấu
+        select(name='type')
+          option(value='1', selected=tournament.type==1) Giải đấu
+          option(value='2', selected=tournament.type==2) Thi đấu
     .form-group
       label.col-sm-3.control-label(for='info') Thông tin giải đấu
       .col-sm-7
         input.form-control(type='text', value=tournament.info, name='info', id='info', placeholder='Thông tin giải đấu')
 
     .form-group
-      label.col-sm-3.control-label(for='member') Golfer tham gia
+      label.col-sm-3.control-label(for='team') Đội tham dự
       .col-sm-7
         ul.list-group.member-list
-        | Thêm
-        input.form-control(type='text', name='golfer', id='golfer', placeholder='nhập tìm kiếm...', autocomplete="off")
-        ul.list-group.suggest-list
-
+          each team, teamIndex in tournament.team
+            li.list-group-item
+              | #{team.team_id.name} 
+        //-       i.fa.fa-times.button-add-golfer(aria-hidden='true', style='float: right;')
+        //- | Thêm
+        //- input.form-control(type='text', name='team', id='team', placeholder='nhập tìm kiếm...', autocomplete="off")
+        //- ul.list-group.suggest-list
+    .form-group
+      label.col-sm-3.control-label(for='team') Tỷ số giải đấu
+      .col-sm-7
+        each team, teamIndex in tournament.team
+          .form-group
+            .col-sm-8
+              | #{team.team_id.name} 
+            .col-sm-4
+              input.form-control(type='hidden', value=team.team_id._id, name='team')
+              input.form-control(type='number', value=team.score, name='score', placeholder='Điểm ' + team.team_id.name)
     .form-group
       .col-sm-12
         button.btn.btn-success(type='submit')
           i.fa.fa-plus-square-o
-          | Cập nhật giải đấu
+          | Sửa giải đấu
   script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
   script
     include createTournament.js

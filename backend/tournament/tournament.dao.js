@@ -1,4 +1,5 @@
 const Tournament = require('./tournament.model');
+const _ = require('underscore');
 
 module.exports = {
   getById: (tournamentId, callback) => {
@@ -33,6 +34,15 @@ module.exports = {
     .lean()
     .exec((err, results) => {
       return callback(err, results);
+    })
+  },
+
+  saveTournamentData: (oldTournamentObj, tournamentData, callback) => {
+    //remove id
+    delete tournamentData._id;
+    _.extend(oldTournamentObj, tournamentData);
+    oldTournamentObj.save((err) => {
+      return callback(err, oldTournamentObj);
     })
   }
 }

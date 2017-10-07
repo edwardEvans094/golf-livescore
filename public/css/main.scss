@@ -83,3 +83,7 @@ textarea {
   text-decoration: line-through;
 }
 
+tr td{
+  background-clip: content-box;
+  text-align: center;
+}

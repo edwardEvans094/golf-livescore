@@ -71,14 +71,51 @@ module.exports = {
 
   renderUpdate: (req, res) => {
     let tournamentId = req.params.id;
-    tournamentService.getById(tournamentId, (err, result) => {
+    tournamentService.getByIdPopulateTeam(tournamentId, (err, result) => {
       if(err){
         //TODO handle error and return
       }
       if(!result){
         // TODO handle and return err
       }
+      console.log(result);
       return res.render('tournament/editTournament', {tournament: result});
+    })
+  },
+
+  editTournament: (req, res) => {
+    let tournamentId = req.params.tournamentId;
+
+    let name = req.body.name;
+    let type = req.body.type;
+    let info = req.body.info;
+    let score = req.body.score;
+    let team = req.body.team;
+    // TODO validate input
+
+    let data = {
+      name: name,
+      info: info,
+      type: type,
+      team: score instanceof Array ? score.map((x, index)=> {return {
+        team_id: team[index],
+        score: Number(x)
+      }}) : {
+        team_id: team,
+        score: score
+      }
+    }
+
+    console.log(data);
+    tournamentService.updateTournamentData(tournamentId, data, (err, result)=> {
+      console.log(err);
+      console.log(result);
+      if(err){
+        req.flash('error', { msg: 'An error when update tournament!' });
+        return res.redirect('/tournament/edit/' + tournamentId);
+      }
+      req.flash('success', { msg: 'Update tournament successfully.' });
+      return res.redirect('/tournament/edit/' + tournamentId);
     })
   }
 }

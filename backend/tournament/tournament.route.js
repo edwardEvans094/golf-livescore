@@ -13,4 +13,6 @@ router.get('/score/:tournamentId', tournamentController.renderScore);
 router.get('/edit/:id', tournamentController.renderUpdate);
 
 router.post('/create', tournamentController.createNewTournament);
+
+router.post('/edit/:tournamentId', tournamentController.editTournament);
 module.exports = router;

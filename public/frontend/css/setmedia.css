@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1000px;
     margin: 0px auto; }
 
   .fs_23 {
@@ -27,8 +27,10 @@ and open the template in the editor.
     height: 100px; }
 
   .match__holes i {
-    padding-left: 20px;
-    padding-right: 20px; }
+    /* padding-left: 20px;
+    padding-right: 20px;  */
+    padding: 15px;
+  }
 
   .fix-li, .match__holes__expanded__grid li, .macht_team_score li {
     font-size: 17px;

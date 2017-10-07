@@ -10,7 +10,8 @@ const matchDAO = {
   getByIdWithPopulate: (matchId, callback) => {
     Match.findById(matchId)
       .populate([
-        {path: 'golfer.golfer_id', model: 'Golfer', select: '_id name avatar'}
+        {path: 'golfer.golfer_id', model: 'Golfer', select: '_id name avatar'},
+        {path: 'tournament_id', model: 'Tournament'}
       ])
       .lean()
       .exec((err, match) => {
@@ -66,6 +67,16 @@ const matchDAO = {
     .lean()
     .exec((err, results) => {
       return callback(err, results);
+    })
+  },
+
+  saveMatchData: (oldMatchObj, data, callback) => {
+    delete data._id;
+    delete data.tournament_id;
+
+    _.extend(oldMatchObj, data);
+    oldMatchObj.save((err) => {
+      return callback(err, oldMatchObj);
     })
   }
 }

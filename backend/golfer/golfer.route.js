@@ -10,6 +10,10 @@ router.get('/search-name', golferController.searchGolferName);
 
 router.get('/search-in-team/:teamId', golferController.searchGolferInTeam);
 
+router.get('/edit/:id', golferController.renderEdit);
+
+router.post('/edit/:id', golferController.editGolfer);
+
 router.post('/create', golferController.createGolfer);
 
 module.exports = router;

@@ -31,5 +31,17 @@ module.exports = {
 
   getAllFoursomesMatch: (tournamentId, callback) => {
     return matchDAO.getAllMatchWithType(tournamentId, matchType.FOURSOME, callback);
+  },
+
+  saveMatchData: (matchId, data, callback) => {
+    matchDAO.getById(matchId, (err, match) => {
+      if(err){
+
+      }
+      if(!match){
+
+      }
+      matchDAO.saveMatchData(match, data, callback);
+    })
   }
 }

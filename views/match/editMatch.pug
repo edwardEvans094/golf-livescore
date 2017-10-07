@@ -1,0 +1,73 @@
+extends ../layout
+
+block content
+
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css', rel='stylesheet')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js')
+
+  .page-headerf
+    h2 Giải đấu #{tournament.name}
+    h3 Edit Match
+  .row
+    .col-sm-6
+      p Upload Match logo
+      <img id="golferAvar" src="/image/simple.png" style="max-width: 300px;" alt="Mountain View">
+      form(id='myFile', role='form', enctype='multipart/form-data', action='/api/upload', method='POST')
+        .form-group
+          label.control-label File Input
+          input(type='file', name='myFile')
+
+  form.form-horizontal(id='signup-form', method='POST')
+    input(type='text', name='_csrf', value=_csrf)
+    input(type='hidden', name='userAvatar', value='')
+    
+    .form-group
+      label.col-sm-3.control-label(for='name') Tên trận đấu
+      .col-sm-7
+        input.form-control(type='text', value=match.name, name='name', id='name', placeholder='Tên trận đấu', autofocus, required)
+
+    .form-group
+      label.col-sm-3.control-label(for='type') Thể loại
+      .col-sm-7
+        select(name='type')
+          option(value='1', selected=match.type==1) Thường
+          option(value='2', selected=match.type==2) Single
+          option(value='3', selected=match.type==3) Foursomes
+    .form-group
+      label.col-sm-3.control-label(for='time') Thời gian
+      .col-sm-7
+        input.form-control(type='date', value=match.time, name='time', id='time', placeholder='Thời gian')
+
+    .form-group
+      label.col-sm-3.control-label(for='teeTime') Tee time
+      .col-sm-7
+        input.form-control(type='text', value=match.tee_time, name='teeTime', id='teeTime', placeholder='Tee time')
+
+    .form-group
+      label.col-sm-3.control-label(for='info') Par
+      .col-sm-7
+        input.form-control(type='text', value=match.par, name='par', id='par', placeholder='Par')
+
+    .form-group
+      label.col-sm-3.control-label(for='member') Golfer tham gia
+
+    each team, index in tournament.team  
+      .form-group(id="form-"+team.team_id._id)
+        label.col-sm-3.control-label(for='member') #{team.team_id.name}
+        input(type='hidden', id='input-' + team.team_id._id, name='team', value='')
+        .col-sm-7
+          ul.list-group.member-list(id='list-' + team.team_id._id)
+          | Thêm
+          input.form-control(type='text', name='golfer', id=team.team_id._id, placeholder='nhập tìm kiếm...', autocomplete="off")
+          ul.list-group.suggest-list(id='suggest-' + team.team_id._id)
+
+    .form-group
+      .col-sm-12
+        button.btn.btn-success(type='submit')
+          i.fa.fa-plus-square-o
+          | Tạo trận đấu
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
+  script
+    include createMatch.js
+    
+    

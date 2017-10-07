@@ -10,6 +10,10 @@ router.get('/update-score/:matchId', matchController.renderUpdateScore);
 
 router.get('/list/:tournamentId', matchController.renderListMatch);
 
+router.get('/edit/:id', matchController.renderEdit);
+
+router.post('/edit/:id', matchController.editMatch);
+
 router.post('/create/:tournamentId', matchController.createNewMatchInTournament);
 
 router.post('/update-score/:matchId', matchController.updateScore);

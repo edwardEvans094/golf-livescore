@@ -1,4 +1,5 @@
 const Golfer = require('./golfer.model');
+const _ = require('underscore');
 
 module.exports = {
   getById: (golferId, callback) => {
@@ -35,6 +36,14 @@ module.exports = {
     .lean()
     .exec((err, golfers) => {
       return callback(err, golfers);
+    })
+  },
+
+  saveGolferData: (oldGolferObj, data, callback) => {
+    delete data._id;
+    _.extend(oldGolferObj, data);
+    oldGolferObj.save((err) => {
+      return callback(err, oldGolferObj);
     })
   }
 

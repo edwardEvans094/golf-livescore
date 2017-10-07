@@ -10,6 +10,7 @@ block content
 				h2= val.name
 				//- p= val.info 
 				p
+					a(href='/match/edit/' + val._id) Edit detail »
 					a.btn.btn-default(href='/match/update-score/' + val._id, role='button') view score »
 	.form-group
 			.col-sm-12

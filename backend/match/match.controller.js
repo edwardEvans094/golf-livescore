@@ -101,6 +101,35 @@ module.exports = {
         res.render('match/listMatch', {list: results, tournamentId: tournamentId});
       })
     })
+  },
+
+  renderEdit: (req, res) => {
+    let matchId = req.params.id;
+    matchService.getByIdWithPopulate(matchId, (err, result) => {
+      if(err){
+
+      }
+      if(!result){
+
+      }
+      console.log(result);
+      return res.render('match/editMatch', {match: result, tournament: result.tournament_id});
+    })
+  },
+
+  editMatch: (req, res) => {
+    let matchId = req.params.id;
     
+    let name = req.body.name;
+    let time = req.body.time;
+    let teeTime = req.body.teeTime;
+    let par = req.body.par;
+    let arrayTeamMember = req.body.team;
+    let type = req.body.type;
+    
+    let data = {
+
+    }
+
   }
 }

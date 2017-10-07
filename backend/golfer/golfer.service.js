@@ -2,7 +2,7 @@ const golferDao = require('./golfer.dao');
 const teamDao = require('../team/team.dao');
 const RecordNotFoundError =  require('../util/error/data_access_error/recordNotFound.error');
 
-module.exports = {
+const golferService = {
   getById: (golferId, callback) => {
     golferDao.getById(golferId, callback);
   },
@@ -26,5 +26,19 @@ module.exports = {
       console.log(team);
       golferDao.searchGolferInTeam(name, team.member, 3, callback);
     })
+  },
+
+  saveGolferData: (golferId, data, callback) => {
+    golferDao.getById(golferId, (err, golfer) => {
+      if(err){
+        return callback(err);
+      }
+      if(!golfer){
+        return new RecordNotFoundError('team not found in saveGolferData()')
+      }
+      golferDao.saveGolferData(golfer, data, callback);
+    })
   }
 }
+
+module.exports = golferService;

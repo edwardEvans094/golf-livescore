@@ -80,10 +80,10 @@ block content
 								if match.golfer[0].result[indexScore] || match.golfer[1].result[indexScore]
 									if match.golfer[0].display[indexScore] == 2 || match.golfer[1].display[indexScore] == 2
 										td.highlight-red= match.golfer[0].result[indexScore] < match.golfer[1].result[indexScore] ? match.golfer[0].result[indexScore] : match.golfer[1].result[indexScore]
+									else if match.golfer[0].display[indexScore] == 3 || match.golfer[1].display[indexScore] == 3
+											td.highlight-unknow= 0
 									else
 										td= match.golfer[0].result[indexScore] < match.golfer[1].result[indexScore] ? match.golfer[0].result[indexScore] : match.golfer[1].result[indexScore]
-								else if match.golfer[0].display[indexScore] == 3 || match.golfer[1].display[indexScore] == 3
-										td.highlight-unknow= 0
 								else 
 									td= 0
 						tr
@@ -92,10 +92,10 @@ block content
 								if match.golfer[2].result[indexScore] || match.golfer[3].result[indexScore]
 									if match.golfer[2].display[indexScore] == 2 || match.golfer[3].display[indexScore] == 2
 										td.highlight-blue= match.golfer[2].result[indexScore] < match.golfer[3].result[indexScore] ? match.golfer[2].result[indexScore] : match.golfer[3].result[indexScore]
+									else if match.golfer[2].display[indexScore] == 3 || match.golfer[3].display[indexScore] == 3
+										td.highlight-unknow= 0
 									else
 										td= match.golfer[2].result[indexScore] < match.golfer[3].result[indexScore] ? match.golfer[2].result[indexScore] : match.golfer[3].result[indexScore]
-								else if match.golfer[2].display[indexScore] == 3 || match.golfer[3].display[indexScore] == 3
-										td.highlight-unknow= 0
 								else 
 									td= 0
 	br

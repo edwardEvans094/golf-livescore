@@ -40,11 +40,10 @@ matchSchema.pre('save', function(next) {
           this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 2; //highlight  
         }
         else if(this.golfer[i].result[parIndex] == tmpObj.minscore){
-          if(this.type == 3 && tmpObj.teamId !== this.golfer[i].team_id.toString()) continue;
+          if(this.type == 3 && tmpObj.teamId !== this.golfer[i].team_id.toString() && this.golfer[i].result[parIndex] !== -1) continue;
                     
           this.golfer[tmpObj.golferIndex].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 1; 
           this.golfer[i].display[parIndex] = this.golfer[i].result[parIndex] == -1 ? 3 : 1; 
-          
         }
         else if(this.golfer[i].result[parIndex] < tmpObj.minscore && this.golfer[i].result[parIndex] <= par){
 

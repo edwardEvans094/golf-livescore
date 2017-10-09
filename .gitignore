@@ -21,8 +21,8 @@ public/css/main.css
 
 # Dependency directory
 node_modules
+uploads
 bower_components
-
 # Editors
 .idea
 *.iml

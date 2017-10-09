@@ -74,6 +74,9 @@ const matchDAO = {
     delete data._id;
     delete data.tournament_id;
 
+    console.log("++++++++++++++++++++++");
+    console.log(data);
+    console.log(oldMatchObj);
     _.extend(oldMatchObj, data);
     oldMatchObj.save((err) => {
       return callback(err, oldMatchObj);

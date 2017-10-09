@@ -10,15 +10,15 @@ block content
     h3 Edit Match
   .row
     .col-sm-6
-      p Upload Match logo
-      <img id="golferAvar" src="/image/simple.png" style="max-width: 300px;" alt="Mountain View">
-      form(id='myFile', role='form', enctype='multipart/form-data', action='/api/upload', method='POST')
-        .form-group
-          label.control-label File Input
-          input(type='file', name='myFile')
+      //- p Upload Match logo
+      //- <img id="golferAvar" src="/image/simple.png" style="max-width: 300px;" alt="Mountain View">
+      //- form(id='myFile', role='form', enctype='multipart/form-data', action='/api/upload', method='POST')
+      //-   .form-group
+      //-     label.control-label File Input
+      //-     input(type='file', name='myFile')
 
   form.form-horizontal(id='signup-form', method='POST')
-    input(type='text', name='_csrf', value=_csrf)
+    input(type='hidden', name='_csrf', value=_csrf)
     input(type='hidden', name='userAvatar', value='')
     
     .form-group
@@ -36,7 +36,7 @@ block content
     .form-group
       label.col-sm-3.control-label(for='time') Thời gian
       .col-sm-7
-        input.form-control(type='date', value=match.time, name='time', id='time', placeholder='Thời gian')
+        input.form-control(type='date', value="12:00", name='time', id='time', placeholder='Thời gian')
 
     .form-group
       label.col-sm-3.control-label(for='teeTime') Tee time
@@ -57,15 +57,19 @@ block content
         input(type='hidden', id='input-' + team.team_id._id, name='team', value='')
         .col-sm-7
           ul.list-group.member-list(id='list-' + team.team_id._id)
-          | Thêm
-          input.form-control(type='text', name='golfer', id=team.team_id._id, placeholder='nhập tìm kiếm...', autocomplete="off")
-          ul.list-group.suggest-list(id='suggest-' + team.team_id._id)
+            each golfer, golferIndex in match.golfer
+              if golfer.team_id == team.team_id._id.toString()
+                li.list-group-item= golfer.golfer_id.name
+
+          //- | Thêm
+          //- input.form-control(type='text', name='golfer', id=team.team_id._id, placeholder='nhập tìm kiếm...', autocomplete="off")
+          //- ul.list-group.suggest-list(id='suggest-' + team.team_id._id)
 
     .form-group
       .col-sm-12
         button.btn.btn-success(type='submit')
           i.fa.fa-plus-square-o
-          | Tạo trận đấu
+          | Cập nhật trận đấu
   script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
   script
     include createMatch.js

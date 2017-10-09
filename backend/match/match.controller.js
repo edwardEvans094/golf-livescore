@@ -112,8 +112,14 @@ module.exports = {
       if(!result){
 
       }
-      console.log(result);
-      return res.render('match/editMatch', {match: result, tournament: result.tournament_id});
+
+      tournamentService.getByIdPopulateTeam(result.tournament_id._id, (err, tournament) => {
+        
+        //TODO check error and return 
+        console.log("^^^^^^^^^^^^^^^^^^^^^^");
+        console.log(result);
+        return res.render('match/editMatch', {match: result, tournament: tournament});
+      });
     })
   },
 
@@ -121,15 +127,51 @@ module.exports = {
     let matchId = req.params.id;
     
     let name = req.body.name;
+    let type = req.body.type;
     let time = req.body.time;
     let teeTime = req.body.teeTime;
     let par = req.body.par;
     let arrayTeamMember = req.body.team;
-    let type = req.body.type;
     
-    let data = {
+    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&');
+    console.log(time);
+    matchService.getById(matchId, (err, match) => {
+      if(err){
+        
+      }
+      if(!match){
 
-    }
-
+      }
+      tournamentService.getById(match.tournament_id, (err, result) => {
+        let golfer = [];
+        // for(let i=0; i < arrayTeamMember.length; i++){
+        //   let memberInTeam = arrayTeamMember[i].split(',').map(golfer_id => {
+        //     return {
+        //       golfer_id: golfer_id,
+        //       team_id: result.team[i].team_id
+        //     }
+        //   });
+        //   golfer = golfer.concat(memberInTeam);
+        // }
+        //TODO check error and return 
+        let parArray = par.split(',');
+        let data = {
+          name: name,
+          type: type,
+          tee_time: teeTime,
+          par: parArray,
+          // golfer: golfer
+        }
+        if(time) { data.time = new Date(time)};
+        matchService.saveMatchData(match._id, data, (err, result) => {
+          if(err){
+            req.flash('error', { msg: 'An error when update match!' });
+            return res.redirect('/match/edit/' + match._id);
+          }
+          req.flash('success', { msg: 'Update match successfully.' });
+          return res.redirect('/match/edit/' + match._id);
+        })
+      });
+    });
   }
 }

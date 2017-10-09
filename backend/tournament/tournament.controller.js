@@ -11,7 +11,7 @@ module.exports = {
 
   createNewTournament: (req, res) => {
     let name = req.body.name;
-    let logo = req.body.body;
+    let logo = req.body.logo;
     let info = req.body.info;
     let team = req.body.teamArray;
     let type = req.body.type;
@@ -19,10 +19,12 @@ module.exports = {
 
     let data = {
       name: name,
-      logo: logo,
       info: info,
       team: team.split(',').map(function(x){return {team_id: x}}),
       type: type
+    }
+    if(logo){
+      data.logo = logo;
     }
     tournamentService.createNewTournament(data, (err, result) => {
       console.log(err);
@@ -76,10 +78,12 @@ module.exports = {
     let info = req.body.info;
     let score = req.body.score;
     let team = req.body.team;
+    let logo = req.body.logo;
     // TODO validate input
 
     let data = {
       name: name,
+      logo: logo,
       info: info,
       type: type,
       team: score instanceof Array ? score.map((x, index)=> {return {
@@ -90,7 +94,7 @@ module.exports = {
         score: score
       }
     }
-
+    console.log("=======================");
     console.log(data);
     tournamentService.updateTournamentData(tournamentId, data, (err, result)=> {
       console.log(err);

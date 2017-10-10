@@ -1,4 +1,4 @@
-const memberObj = {};
+
 jQuery(document).ready(function($){
   const searchGolferUrl = '/golfer/search-in-team/';
 

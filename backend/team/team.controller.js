@@ -33,7 +33,7 @@ module.exports = {
 
   renderEditTeam: (req, res) => {
     let teamId = req.params.teamId;
-    teamService.getById(teamId, (err, team) => {
+    teamService.getByIdPopulate(teamId, (err, team) => {
       if(err){
         
       }

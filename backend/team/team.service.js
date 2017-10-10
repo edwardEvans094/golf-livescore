@@ -4,6 +4,10 @@ module.exports = {
   getById : (teamId, callback) => {
     teamDAO.getById(teamId, callback);
   },
+
+  getByIdPopulate : (teamId, callback) => {
+    teamDAO.getByIdPopulate(teamId, callback);
+  },
   
   createNewTeam: (teamData, callback) => {
     teamDAO.createNewTeam(teamData, callback);

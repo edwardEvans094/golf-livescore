@@ -43,7 +43,8 @@ block content
 				| Thêm
 				input.form-control(type='text', name='golfer', id='golfer', placeholder='nhập tìm kiếm...', autocomplete="off")
 				ul.list-group.suggest-list
-
+					each member, memberIndex in team.member
+						li.list-group-item= member.name
 		.form-group
 			.col-sm-12
 				button.btn.btn-success(type='submit')

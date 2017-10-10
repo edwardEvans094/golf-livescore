@@ -8,6 +8,17 @@ module.exports = {
     })
   }, 
 
+  getByIdPopulate : (teamId, callback) => {
+    Team.findById(teamId)
+    .populate([
+      {path: 'member', model: 'Golfer', select: '_id name avatar'}
+    ])
+    .lean()
+    .exec((err, team) => {
+      return callback(err, team);
+    })
+  }, 
+
   getByName : (teamName, callback) => {
 
   },

@@ -8,6 +8,8 @@ router.get('/create', teamController.renderCreate);
 
 router.get('/search-name', teamController.searchTeamByName);
 
+router.get('/list', teamController.renderListTeam);
+
 router.post('/create', teamController.createNewTeam);
 
 module.exports = router;

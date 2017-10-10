@@ -38,6 +38,10 @@ const golferService = {
       }
       golferDao.saveGolferData(golfer, data, callback);
     })
+  },
+
+  getAll: (limit, offset, callback) => {
+    golferDao.getAll(limit, offset, callback);
   }
 }
 

@@ -19,6 +19,18 @@ module.exports = {
     })
   },
 
+  renderListTeam: (req, res) => {
+    teamService.getAll(30, 0, (err, results) => {
+      if(err){
+
+      }
+      if(!results){
+
+      }
+      return res.render('team/listTeam', {teams: results});
+    })
+  },
+
   createNewTeam: (req, res) => {
     let name = req.body.name;
     let info = req.body.name;

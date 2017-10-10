@@ -12,6 +12,8 @@ router.get('/search-in-team/:teamId', golferController.searchGolferInTeam);
 
 router.get('/edit/:id', golferController.renderEdit);
 
+router.get('/list', golferController.renderListUser);
+
 router.post('/edit/:id', golferController.editGolfer);
 
 router.post('/create', golferController.createGolfer);

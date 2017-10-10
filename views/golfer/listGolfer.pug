@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+	h1 List golfer
+	p.lead A boilerplate for Node.js web applications.
+	hr
+	.row
+		each val, index in golfers
+			.col-sm-6
+				h2= val.name
+				//- p= val.info 
+				p
+					a(href='/golfer/edit/' + val._id) Edit details »
+	//- script
+		include listTournament.js

@@ -1,53 +1,56 @@
 extends ../layout
 
 block content
-  .page-header
-    h3 Create Golfer
-  .row
-    .col-sm-6
-      p Upload Golfer avatar
-      <img id="golferAvar" src="/image/simple.png" style="max-width: 300px;" alt="Mountain View">
-      form(id='myFile', role='form', enctype='multipart/form-data', action='/api/upload', method='POST')
-        .form-group
-          label.control-label File Input
-          input(type='file', name='myFile')
-        //- button.btn.btn-primary(type='submit') Submit
-  //- input#fileupload(type='file', name='files[]', data-url='/api/upload', multiple='')
+	.page-header
+		h3 Edit Golfer
+	.row
+		.col-sm-6
+			p Upload Golfer avatar
+			if golfer.avatar
+				img#golferAvar(src='/uploads/' + golfer.avatar, style='max-width: 300px;', alt='Mountain View')
+			else 
+				img#golferAvar(src='/image/simple.png', style='max-width: 300px;', alt='Mountain View')
+			form(id='myFile', role='form', enctype='multipart/form-data', action='/api/upload', method='POST')
+				.form-group
+					label.control-label File Input
+					input(type='file', name='myFile')
+				//- button.btn.btn-primary(type='submit') Submit
+	//- input#fileupload(type='file', name='files[]', data-url='/api/upload', multiple='')
 
-  form.form-horizontal(id='signup-form', method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    input(type='hidden', name='userAvatar', value=golfer.avatar)
-    .form-group
-      label.col-sm-3.control-label(for='email') Họ tên
-      .col-sm-7
-        input.form-control(type='text', value=golfer.name, name='name', id='name', placeholder='Tên Golfer', autofocus, required)
+	form.form-horizontal(id='signup-form', method='POST')
+		input(type='hidden', name='_csrf', value=_csrf)
+		input(type='hidden', name='avatar', value=golfer.avatar)
+		.form-group
+			label.col-sm-3.control-label(for='email') Họ tên
+			.col-sm-7
+				input.form-control(type='text', value=golfer.name, name='name', id='name', placeholder='Tên Golfer', autofocus, required)
 
-    .form-group
-      label.col-sm-3.control-label(for='email') Quốc tịch
-      .col-sm-7
-        input.form-control(type='text', value=golfer.nation,  name='nation', id='nation', placeholder='Quốc tịch')
+		.form-group
+			label.col-sm-3.control-label(for='email') Quốc tịch
+			.col-sm-7
+				input.form-control(type='text', value=golfer.nation, name='nation', id='nation', placeholder='Quốc tịch')
 
-    .form-group
-      label.col-sm-3.control-label(for='text') Giới tính
-      .col-sm-7
-        //- input.form-control(type='password', name='password', id='password', placeholder='Password', required)
-        select(name='gender')
-          option(value='1', selected=golfer.gender==1) Nam
-          option(value='2', selected=golfer.gender==2) Nữ nghiệp
-          option(value='3', selected=golfer.gender==3) Khác
-    .form-group
-      label.col-sm-3.control-label(for='level') Trình độ
-      .col-sm-7
-        select(name='level')
-          option(value='1', selected=golfer.level==1) Nghiệp dư
-          option(value='2', selected=golfer.level==2) Chuyên nghiệp
-        //- input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', required)
-    .form-group
-      .col-sm-offset-3.col-sm-7
-        button.btn.btn-success(type='submit')
-          i.fa.fa-user-plus
-          | Sua
+		.form-group
+			label.col-sm-3.control-label(for='text') Giới tính
+			.col-sm-7
+				//- input.form-control(type='password', name='password', id='password', placeholder='Password', required)
+				select(name='gender')
+					option(value='1', selected=golfer.gender==1) Nam
+					option(value='2', selected=golfer.gender==2) Nữ nghiệp
+					option(value='3', selected=golfer.gender==3) Khác
+		.form-group
+			label.col-sm-3.control-label(for='confirmPassword') Trình độ
+			.col-sm-7
+				select(name='level')
+					option(value='1', selected=golfer.level==1) Nghiệp dư
+					option(value='2', selected=golfer.level==2) Chuyên nghiệp
+				//- input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', required)
+		.form-group
+			.col-sm-offset-3.col-sm-7
+				button.btn.btn-success(type='submit')
+					i.fa.fa-user-plus
+					| Thêm
 
-  include createGolfer.js
-    
-    
+	include createGolfer.js
+		
+		

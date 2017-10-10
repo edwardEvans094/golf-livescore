@@ -32,5 +32,17 @@ module.exports = {
     .exec((err, teams) => {
       return callback(err, teams);
     })
+  },
+
+  getAll: (limit, offset, callback) => {
+    Team.find()
+    .where('status').equals(1)
+    .sort({created_at: -1})
+    .limit(limit)
+    .skip(offset)
+    .lean()
+    .exec((err, teams) => {
+      return callback(err, teams);
+    })
   }
 }

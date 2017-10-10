@@ -69,7 +69,21 @@ module.exports = {
       if(!result){
 
       }
+      console.log("----------------");
+      console.log(result);
       return res.render('golfer/editGolfer', {golfer: result});
+    })
+  },
+
+  renderListUser: (req, res) => {
+    golferService.getAll(50, 0, (err, results) => {
+      if(err){
+
+      }
+      if(!results){
+
+      }
+      return res.render('golfer/listGolfer', {golfers: results});
     })
   },
 
@@ -80,12 +94,14 @@ module.exports = {
     let nation = req.body.nation;
     let gender = req.body.gender;
     let level = req.body.level;
+    let avatar = req.body.avatar;
 
     let data = {
       name: name,
       nation: nation,
       gender: gender,
-      level: level
+      level: level,
+      avatar: avatar
     }
     golferService.saveGolferData(golferId, data, (err, result) => {
       if(err){

@@ -45,6 +45,18 @@ module.exports = {
     oldGolferObj.save((err) => {
       return callback(err, oldGolferObj);
     })
+  },
+
+  getAll: (limit, offset, callback) => {
+    Golfer.find()
+    .where('status').equals(1)
+    .sort({created_at: -1})
+    .limit(limit)
+    .skip(offset)
+    .lean()
+    .exec((err, golfers) => {
+      return callback(err, golfers);
+    })
   }
 
 }

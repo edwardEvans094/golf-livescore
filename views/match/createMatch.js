@@ -1,3 +1,14 @@
+var remove = function(teamId, golferId){
+  $('#listItem-' + teamId + '-' + golferId).remove();
+  console.log(memberObj);
+  console.log('#listItem-' + teamId + '-' + golferId);
+  if(memberObj[teamId].length >1){
+    memberObj[teamId].splice(memberObj[teamId].indexOf(golferId), 1);
+  } else {
+    delete memberObj[teamId];
+  }
+  
+}
 
 jQuery(document).ready(function($){
   const searchGolferUrl = '/golfer/search-in-team/';
@@ -36,5 +47,5 @@ function addGolferToMemberList(golfer, teamId){
   console.log(memberObj);
   
   $('#input-' + teamId).val(memberObj[teamId]);
-  $('#list-' + teamId).append('<li class="list-group-item">' + golferObj.name +'<i class="fa fa-times button-add-golfer" aria-hidden="true" style="float: right;"></i></li>');
+  $('#list-' + teamId).append('<li class="list-group-item" id="listItem-' + teamId + '-' + golferObj._id + '">' + golferObj.name +'<i class="fa fa-times button-add-golfer" aria-hidden="true" style="float: right;" onclick="remove(\'' + teamId + '\',\'' + golferObj._id + '\')"></i></li>');
 }

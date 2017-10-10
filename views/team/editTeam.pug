@@ -41,7 +41,8 @@ block content
 			.col-sm-7
 				ul.list-group.member-list
 					each member, memberIndex in team.member
-						li.list-group-item= member.name
+						li.list-group-item(id="list-"+member._id)= member.name
+							i.fa.fa-times.button-add-golfer(aria-hidden='true', style='float: right;', onclick="remove('" + member._id + "')")
 				| Thêm
 				input.form-control(type='text', name='golfer', id='golfer', placeholder='nhập tìm kiếm...', autocomplete="off")
 				ul.list-group.suggest-list

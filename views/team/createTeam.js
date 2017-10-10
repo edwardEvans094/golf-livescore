@@ -1,3 +1,7 @@
+var remove = function(id){
+  $('#list-' + id).remove();
+  arrayMember.splice(arrayMember.indexOf(id), 1);
+}
 
 jQuery(document).ready(function($){
   const searchGolferUrl = '/golfer/search-name';
@@ -66,5 +70,5 @@ function addGolferToMemberList(golfer){
   if(arrayMember.indexOf(golferObj._id) >= 0) return;
   arrayMember.push(golferObj._id);
   $('input[name=member]').val(arrayMember);
-  $('.member-list').append('<li class="list-group-item">' + golferObj.name +'<i class="fa fa-times button-add-golfer" aria-hidden="true" style="float: right;"></i></li>');
+  $('.member-list').append('<li class="list-group-item" id="list-' + golferObj._id + '">' + golferObj.name +'<i class="fa fa-times button-add-golfer" aria-hidden="true" style="float: right; " onclick="remove(\'' + golferObj._id + '\')"></i></li>');
 }

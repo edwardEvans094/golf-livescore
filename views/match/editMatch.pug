@@ -59,8 +59,8 @@ block content
 					ul.list-group.member-list(id='list-' + team.team_id._id)
 						each golfer, golferIndex in match.golfer
 							if golfer.team_id == team.team_id._id.toString()
-								li.list-group-item= golfer.golfer_id.name
-
+								li.list-group-item(id="listItem-"+ team.team_id._id + '-' + golfer.golfer_id._id)= golfer.golfer_id.name
+									i.fa.fa-times.button-add-golfer(aria-hidden='true', style='float: right;', onclick="remove('" + team.team_id._id + "','" + golfer.golfer_id._id + "')")
 					| Thêm
 					input.form-control(type='text', name='golfer', id=team.team_id._id, placeholder='nhập tìm kiếm...', autocomplete="off")
 					ul.list-group.suggest-list(id='suggest-' + team.team_id._id)

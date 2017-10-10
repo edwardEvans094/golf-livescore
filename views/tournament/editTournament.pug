@@ -49,9 +49,9 @@ block content
 			.col-sm-7
 				ul.list-group.member-list
 					each team, teamIndex in tournament.team
-						li.list-group-item
+						li.list-group-item(id="list-"+team._id)
 							| #{team.team_id.name} 
-							i.fa.fa-times.button-add-golfer(aria-hidden='true', style='float: right;')
+							i.fa.fa-times.button-add-golfer(aria-hidden='true', style='float: right;', onclick="remove('" + team._id + "')")
 				| Thêm
 				input.form-control(type='text', name='team', id='team', placeholder='nhập tìm kiếm...', autocomplete="off")
 				ul.list-group.suggest-list

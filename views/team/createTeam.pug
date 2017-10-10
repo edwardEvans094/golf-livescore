@@ -48,5 +48,10 @@ block content
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
 	script.
 		const arrayMember = [];
+
+	script.
+		let team = !{JSON.stringify(team)};
+		const arrayMember = team ? team.member.map((x) => { return x._id}) : [];
+		
 	script
 		include createTeam.js

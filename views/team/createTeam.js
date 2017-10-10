@@ -1,6 +1,7 @@
 var remove = function(id){
   $('#list-' + id).remove();
   arrayMember.splice(arrayMember.indexOf(id), 1);
+  $('input[name=member]').val(arrayMember);
 }
 
 jQuery(document).ready(function($){

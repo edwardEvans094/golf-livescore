@@ -6,6 +6,15 @@ var remove = function(id){
 jQuery(document).ready(function($){
   const searchGolferUrl = '/team/search-name';
   
+  $('#editor').html($('#textarea-info').val());
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
+  $("#signup-form").submit( function(eventObj) {
+    $('#textarea-info').val($('#editor').html());
+    return true;
+  });
 
   $("input[name='myFile']").change(function() { 
     var formData = new FormData('#myFile');
@@ -68,4 +77,11 @@ function addGolferToMemberList(team){
     </div>
   </div>
   `)
+}
+
+
+text = function(){
+  console.log('text');
+  console.log($('#editor').html());
+  $('#textarea-info').val($('#editor').html());
 }

@@ -10,6 +10,10 @@ router.get('/search-name', teamController.searchTeamByName);
 
 router.get('/list', teamController.renderListTeam);
 
+router.get('/edit/:teamId', teamController.renderEditTeam);
+
+router.post('/edit/:teamId', teamController.editTeam);
+
 router.post('/create', teamController.createNewTeam);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 let Team = require('./team.model');
 let Golfer = require('../golfer/golfer.model');
-
+let _ = require('underscore');
 module.exports = {
   getById : (teamId, callback) => {
     Team.findById(teamId, (err, team) => {
@@ -44,5 +44,12 @@ module.exports = {
     .exec((err, teams) => {
       return callback(err, teams);
     })
+  },
+
+  saveTeamData: (teamObj, data, callback) => {
+    _.extend(teamObj, data);
+    teamObj.save((err) => {
+      return callback(err, teamObj);
+    });
   }
 }

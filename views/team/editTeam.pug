@@ -40,17 +40,21 @@ block content
 			label.col-sm-3.control-label(for='member') Golfer tham gia
 			.col-sm-7
 				ul.list-group.member-list
+					each member, memberIndex in team.member
+						li.list-group-item= member.name
 				| Thêm
 				input.form-control(type='text', name='golfer', id='golfer', placeholder='nhập tìm kiếm...', autocomplete="off")
 				ul.list-group.suggest-list
-					each member, memberIndex in team.member
-						li.list-group-item= member.name
 		.form-group
 			.col-sm-12
 				button.btn.btn-success(type='submit')
 					i.fa.fa-plus-square-o
 					| Sửa
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
+
+	script.
+		let team = !{JSON.stringify(team)};
+		const arrayMember = team ? team.member.map((x) => { return x._id}) : [];
 	script
 		include createTeam.js
 		

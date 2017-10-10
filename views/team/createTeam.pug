@@ -2,51 +2,51 @@ extends ../layout
 
 block content
 
-  link(href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css', rel='stylesheet')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js')
+	link(href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css', rel='stylesheet')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js')
 
-  .page-header
-    h3 Create Team
-  .row
-    .col-sm-6
-      p Upload Team logo
-      <img id="golferAvar" src="/image/simple.png" style="max-width: 300px;" alt="Mountain View">
-      form(id='myFile', role='form', enctype='multipart/form-data', action='/api/upload', method='POST')
-        .form-group
-          label.control-label File Input
-          input(type='file', name='myFile')
-        //- button.btn.btn-primary(type='submit') Submit
-  //- input#fileupload(type='file', name='files[]', data-url='/api/upload', multiple='')
+	.page-header
+		h3 Create Team
+	.row
+		.col-sm-6
+			p Upload Team logo
+			<img id="golferAvar" src="/image/simple.png" style="max-width: 300px;" alt="Mountain View">
+			form(id='myFile', role='form', enctype='multipart/form-data', action='/api/upload', method='POST')
+				.form-group
+					label.control-label File Input
+					input(type='file', name='myFile')
+				//- button.btn.btn-primary(type='submit') Submit
+	//- input#fileupload(type='file', name='files[]', data-url='/api/upload', multiple='')
 
-  form.form-horizontal(id='signup-form', method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    input(type='hidden', name='logo', value='')
-    input(type='hidden', name='member', value='')
-    .form-group
-      label.col-sm-3.control-label(for='name') Tên đội
-      .col-sm-7
-        input.form-control(type='text', name='name', id='name', placeholder='Tên đội', autofocus, required)
+	form.form-horizontal(id='signup-form', method='POST')
+		input(type='hidden', name='_csrf', value=_csrf)
+		input(type='hidden', name='logo', value='')
+		input(type='hidden', name='member', value='')
+		.form-group
+			label.col-sm-3.control-label(for='name') Tên đội
+			.col-sm-7
+				input.form-control(type='text', name='name', id='name', placeholder='Tên đội', autofocus, required)
 
-    .form-group
-      label.col-sm-3.control-label(for='info') Thông tin
-      .col-sm-7
-        input.form-control(type='text', name='info', id='info', placeholder='Thông tin ')
+		.form-group
+			label.col-sm-3.control-label(for='info') Thông tin
+			.col-sm-7
+				input.form-control(type='text', name='info', id='info', placeholder='Thông tin ')
 
-    .form-group
-      label.col-sm-3.control-label(for='member') Golfer tham gia
-      .col-sm-7
-        ul.list-group.member-list
-        | Thêm
-        input.form-control(type='text', name='golfer', id='golfer', placeholder='nhập tìm kiếm...', autocomplete="off")
-        ul.list-group.suggest-list
+		.form-group
+			label.col-sm-3.control-label(for='member') Golfer tham gia
+			.col-sm-7
+				ul.list-group.member-list
+				| Thêm
+				input.form-control(type='text', name='golfer', id='golfer', placeholder='nhập tìm kiếm...', autocomplete="off")
+				ul.list-group.suggest-list
 
-    .form-group
-      .col-sm-12
-        button.btn.btn-success(type='submit')
-          i.fa.fa-plus-square-o
-          | Tạo đội
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
-  script
-    include createTeam.js
-    
-    
+		.form-group
+			.col-sm-12
+				button.btn.btn-success(type='submit')
+					i.fa.fa-plus-square-o
+					| Tạo đội
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
+	script.
+		const arrayMember = [];
+	script
+		include createTeam.js

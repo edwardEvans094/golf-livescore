@@ -1,4 +1,3 @@
-const arrayMember = [];
 jQuery(document).ready(function($){
   const searchGolferUrl = '/team/search-name';
   

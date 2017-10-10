@@ -1,4 +1,4 @@
-const arrayMember = [];
+
 jQuery(document).ready(function($){
   const searchGolferUrl = '/golfer/search-name';
   

@@ -49,17 +49,17 @@ block content
 			.col-sm-7
 				ul.list-group.member-list
 					each team, teamIndex in tournament.team
-						li.list-group-item(id="list-"+team._id)
+						li.list-group-item(class="list-"+team._id)
 							| #{team.team_id.name} 
 							i.fa.fa-times.button-add-golfer(aria-hidden='true', style='float: right;', onclick="remove('" + team._id + "')")
 				| Thêm
-				input.form-control(type='text', name='team', id='team', placeholder='nhập tìm kiếm...', autocomplete="off")
+				input.form-control(type='text', name='team-search', id='team', placeholder='nhập tìm kiếm...', autocomplete="off")
 				ul.list-group.suggest-list
 		.form-group
 			label.col-sm-3.control-label(for='team') Tỷ số giải đấu
-			.col-sm-7
+			.col-sm-7(id="score-broad")
 				each team, teamIndex in tournament.team
-					.form-group
+					.form-group(class="list-"+team._id)
 						.col-sm-8
 							| #{team.team_id.name} 
 						.col-sm-4

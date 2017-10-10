@@ -80,6 +80,8 @@ block content
 			} else {
 				memberObj[match.golfer[i].team_id].push(match.golfer[i].golfer_id._id);
 			}
+
+			$('#input-' + match.golfer[i].team_id).val(memberObj[match.golfer[i].team_id]);
 		}
 
 	script

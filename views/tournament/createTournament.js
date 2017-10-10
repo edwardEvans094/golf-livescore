@@ -1,5 +1,5 @@
 var remove = function(id){
-  $('#list-' + id).remove();
+  $('.list-' + id).remove();
   arrayMember.splice(arrayMember.indexOf(id), 1);
 }
 
@@ -49,7 +49,7 @@ jQuery(document).ready(function($){
     
   }
   var lazySearch = _.debounce(searchTeam, 300);
-  $("input[name='team']").keyup(lazySearch);
+  $("input[name='team-search']").keyup(lazySearch);
 });
 
 function addGolferToMemberList(team){
@@ -58,4 +58,14 @@ function addGolferToMemberList(team){
   arrayMember.push(golferObj._id);
   $('input[name=teamArray]').val(arrayMember);
   $('.member-list').append('<li class="list-group-item" id="list-' + golferObj._id + '">' + golferObj.name +'<i class="fa fa-times button-add-golfer" aria-hidden="true" style="float: right;", onclick="remove(\'' + golferObj._id + '\')"></i></li>');
+
+  $('#score-broad').append(`
+  <div class="form-group list-${golferObj._id}">
+    <div class="col-sm-8">${golferObj.name}</div>
+    <div class="col-sm-4">
+      <input type="hidden" value="${golferObj._id}" name="team" class="form-control"/>
+      <input type="number" value="0" name="score" placeholder="Điểm " class="form-control"/>
+    </div>
+  </div>
+  `)
 }

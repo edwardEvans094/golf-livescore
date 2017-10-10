@@ -7,8 +7,8 @@ var remove = function(teamId, golferId){
   } else {
     delete memberObj[teamId];
   }
-  
 }
+
 
 jQuery(document).ready(function($){
   const searchGolferUrl = '/golfer/search-in-team/';
@@ -44,7 +44,7 @@ function addGolferToMemberList(golfer, teamId){
     if(memberObj[teamId].indexOf(golferObj._id) >= 0) return;
     memberObj[teamId].push(golferObj._id);
   }
-  console.log(memberObj);
+  console.log(memberObj[teamId]);
   
   $('#input-' + teamId).val(memberObj[teamId]);
   $('#list-' + teamId).append('<li class="list-group-item" id="listItem-' + teamId + '-' + golferObj._id + '">' + golferObj.name +'<i class="fa fa-times button-add-golfer" aria-hidden="true" style="float: right;" onclick="remove(\'' + teamId + '\',\'' + golferObj._id + '\')"></i></li>');

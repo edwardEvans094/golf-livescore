@@ -61,6 +61,7 @@ module.exports = {
     if(member){
       data.member = member.split(',')
     }
+
     teamService.saveTeamData(teamId, data, (err, result) => {
       if(err){
 

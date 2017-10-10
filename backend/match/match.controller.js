@@ -134,7 +134,7 @@ module.exports = {
     let arrayTeamMember = req.body.team;
     
     console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&');
-    console.log(time);
+    console.log(arrayTeamMember);
     matchService.getById(matchId, (err, match) => {
       if(err){
         
@@ -144,15 +144,15 @@ module.exports = {
       }
       tournamentService.getById(match.tournament_id, (err, result) => {
         let golfer = [];
-        // for(let i=0; i < arrayTeamMember.length; i++){
-        //   let memberInTeam = arrayTeamMember[i].split(',').map(golfer_id => {
-        //     return {
-        //       golfer_id: golfer_id,
-        //       team_id: result.team[i].team_id
-        //     }
-        //   });
-        //   golfer = golfer.concat(memberInTeam);
-        // }
+        for(let i=0; i < arrayTeamMember.length; i++){
+          let memberInTeam = arrayTeamMember[i].split(',').map(golfer_id => {
+            return {
+              golfer_id: golfer_id,
+              team_id: result.team[i].team_id
+            }
+          });
+          golfer = golfer.concat(memberInTeam);
+        }
         //TODO check error and return 
         let parArray = par.split(',');
         let data = {
@@ -160,7 +160,7 @@ module.exports = {
           type: type,
           tee_time: teeTime,
           par: parArray,
-          // golfer: golfer
+          golfer: golfer
         }
         if(time) { data.time = new Date(time)};
         matchService.saveMatchData(match._id, data, (err, result) => {

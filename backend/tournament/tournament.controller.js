@@ -80,7 +80,7 @@ module.exports = {
     let team = req.body.team;
     let logo = req.body.logo;
     // TODO validate input
-
+    console.log(team);
     let data = {
       name: name,
       logo: logo,
